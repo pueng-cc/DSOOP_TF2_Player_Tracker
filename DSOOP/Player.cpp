@@ -107,9 +107,7 @@ std::string Player::tolowerString(std::string input)
 bool Player::ValidateScout()
 {
 	bool isValid = false;
-	std::string lowerCasePrimaryWeapon = "";
-
-	lowerCasePrimaryWeapon = tolowerString(primaryWeapon);
+	std::string lowerCasePrimaryWeapon = tolowerString(primaryWeapon);
 
 	if (lowerCasePrimaryWeapon.find("shotgun") != -1)
 	{
@@ -122,9 +120,7 @@ bool Player::ValidateScout()
 bool Player::ValidateSoldier()
 {
 	bool isValid = false;
-	std::string lowerCaseSecondaryWeapon = "";
-
-	lowerCaseSecondaryWeapon = tolowerString(secondaryWeapon);
+	std::string lowerCaseSecondaryWeapon = tolowerString(secondaryWeapon);
 
 	if (lowerCaseSecondaryWeapon.find("shotgun") != -1)
 	{
@@ -136,13 +132,9 @@ bool Player::ValidateSoldier()
 bool Player::ValidatePyro()
 {
 	bool isValid = false;
-	std::string lowerCasePrimaryWeapon = "";
-	std::string lowerCaseSecondaryWeapon = "";
-	std::string lowerCaseMeleeWeapon = "";
-
-	lowerCasePrimaryWeapon = tolowerString(primaryWeapon);
-	lowerCaseSecondaryWeapon = tolowerString(secondaryWeapon);
-	lowerCaseMeleeWeapon = tolowerString(meleeWeapon);
+	std::string lowerCasePrimaryWeapon = tolowerString(primaryWeapon);
+	std::string lowerCaseSecondaryWeapon = tolowerString(secondaryWeapon);
+	std::string lowerCaseMeleeWeapon = tolowerString(meleeWeapon);
 
 	if (lowerCasePrimaryWeapon.find("rainbow") != -1)
 	{
@@ -180,6 +172,77 @@ bool Player::MustBeDemoman()
 		isValid = true;
 	}
 	else if (name.find("Thomson") != -1)
+	{
+		isValid = true;
+	}
+
+	return isValid;
+}
+
+bool Player::ValidateHeavy()
+{
+	bool isValid = false;
+	std::string lowerCaseName = tolowerString(name);
+	std::string lowerCasePrimaryWeapon = tolowerString(primaryWeapon);
+	std::string lowerCaseSecondaryWeapon = tolowerString(secondaryWeapon);
+	std::string lowerCaseMeleeWeapon = tolowerString(meleeWeapon);
+
+	if (lowerCaseName.find("smart") != 0 && lowerCasePrimaryWeapon.find("smart") != 0 &&
+		lowerCaseSecondaryWeapon.find("smart") != 0 && lowerCaseMeleeWeapon.find("smart") != 0)
+	{
+		if (lowerCaseMeleeWeapon.compare("fist") == 0 || lowerCaseMeleeWeapon.compare("fists") == 0 || lowerCaseMeleeWeapon.compare("sandvich") == 0)
+		{
+			isValid == true;
+		}
+	}
+
+	return isValid;
+}
+
+bool Player::ValidateEngineer()
+{
+	bool isValid = false;
+
+	if (primaryWeapon.find("Stool") != -1 || primaryWeapon.find("Chair") != -1 || primaryWeapon.find("Sittable") != -1 ||
+		secondaryWeapon.find("Stool") != -1 || secondaryWeapon.find("Chair") != -1 || secondaryWeapon.find("Sittable") != -1 ||
+		meleeWeapon.find("Stool") != -1 || meleeWeapon.find("Chair") != -1 || meleeWeapon.find("Sittable") != -1)
+	{
+		isValid = true;
+	}
+
+	return isValid;
+}
+
+bool Player::ValidateMedic()
+{
+	bool isValid = false;
+	int healCounter = 0;
+	bool noMoreHeal = false;
+	size_t healIterator = 0;
+	std::string combinedWeaponsName = "";
+
+	combinedWeaponsName.append(primaryWeapon);
+	combinedWeaponsName.append(" ");
+	combinedWeaponsName.append(secondaryWeapon);
+	combinedWeaponsName.append(" ");
+	combinedWeaponsName.append(meleeWeapon);
+	combinedWeaponsName = tolowerString(combinedWeaponsName);
+
+	while (healCounter < 3 && noMoreHeal == false)
+	{
+		healIterator = combinedWeaponsName.find("heal");
+		if (healIterator != -1)
+		{
+			healCounter++;
+			combinedWeaponsName.erase(healIterator, 4);
+		}
+		else
+		{
+			noMoreHeal = true;
+		}
+	}
+
+	if (healCounter >= 3)
 	{
 		isValid = true;
 	}
@@ -251,6 +314,16 @@ bool Player::ValidateSpy()
 	return isValid;
 }
 
+Player::Player()
+{
+	name = "";
+	playerClass = "";
+	primaryWeapon = "";
+	secondaryWeapon = "";
+	meleeWeapon = "";
+	numberOfHats = 0;
+}
+
 std::string Player::GetName()
 {
 	return name;
@@ -288,6 +361,71 @@ bool Player::SetName(std::string input)
 	if (ValidateName(input) == true)
 	{
 		name = input;
+		isValid = true;
+	}
+
+	return isValid;
+}
+
+bool Player::SetPlayerClass(std::string input)
+{
+	bool isValid = false;
+
+	if (ValidatePlayerClass(input) == true)
+	{
+		playerClass = input;
+		isValid = true;
+	}
+
+	return isValid;
+}
+
+bool Player::SetPrimaryWeapon(std::string input)
+{
+	bool isValid = false;
+
+	if (ValidatePrimaryWeapon(input) == true)
+	{
+		primaryWeapon = input;
+		isValid = true;
+	}
+
+	return isValid;
+}
+
+bool Player::SetSecondaryWeapon(std::string input)
+{
+	bool isValid = false;
+
+	if (ValidateSecondaryWeapon(input) == true)
+	{
+		secondaryWeapon = input;
+		isValid = true;
+	}
+
+	return isValid;
+}
+
+bool Player::SetMeleeWeapon(std::string input)
+{
+	bool isValid = false;
+
+	if (ValidateMeleeWeapon(input) == true)
+	{
+		meleeWeapon = input;
+		isValid = true;
+	}
+
+	return isValid;
+}
+
+bool Player::SetNumberOfHats(int input)
+{
+	bool isValid = false;
+
+	if (ValidateNumberOfHats(input) == true)
+	{
+		numberOfHats = input;
 		isValid = true;
 	}
 
