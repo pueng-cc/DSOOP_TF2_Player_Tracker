@@ -347,7 +347,7 @@ bool Player::ValidateHeavy()
 	{
 		if (lowerCaseMeleeWeapon.compare("fist") == 0 || lowerCaseMeleeWeapon.compare("fists") == 0 || lowerCaseMeleeWeapon.compare("sandvich") == 0)
 		{
-			isValid = true;
+			isValid == true;
 		}
 	}
 
