@@ -60,4 +60,11 @@ public:
 	bool ValidateMedic(); // The word “heal” must appear at least three times across the three weapons of a Medic (non-case sensitive)
 	bool ValidateSniper(); // Sniper has to have at least 5 hats to be valid
 	bool ValidateSpy(); // All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet” (case insensitive)
+
+	// overload the extraction operator for this class (for ASCII object output)
+	friend ofstream& operator<< (ofstream& s, Player& obj);
+
+	// overload the insertion operator for this class (for ASCII object output)
+	friend ifstream& operator>> (ifstream& s, Player& obj);
+
 };

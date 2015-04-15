@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
 #include "Player.h"
 
 using namespace std;
@@ -11,7 +12,6 @@ class Container
 private:
 	vector <Player> containerVector;
 	vector <Player>::iterator myVectorIter;
-
 
 public:
 
@@ -23,23 +23,23 @@ public:
 	~Container();
 
 	//Mutators
-	void AddToContainer(Player newPlayer);	//Will add a player class to the list.
-	void DeleteFromContainer(Player deletePlayer);	//Will delete a player class from the list.
-	void DeleteContainer(void);	//Deletes the entire list.
+	bool AddToContainer(Player newPlayer);			//Will add a player class to the list.
+	void DeleteFromContainer(string playerName);	//Will delete a player class from the list.
+	void DeleteContainer(void);						//Deletes the entire list.
 
 	//Accesors
-	Player SearchByName(string searchName);	//Searches for a specific player. //Could be changed to a char depends on how we get input form the user.
-	//SearchByClass(string searchClass)		//Not quite sure how to return a list of them yet. Depends how we do the view layer.
-	//SearchByHats(int numOfHats)
+	Player* SearchByName(string searchName);	//Searches for a specific player by name.
+	string SearchByClass(string searchClass);	//Searches for players by class.
+	string SearchByHats(int numOfHats);			//Searches for players by number of hats.
 
 	//Methods.
-	bool retreiveFromFile(void);	//Working on theis.
+	bool retreiveFromFile(void);	//Working on this.
 	bool storeInFile(void);	
 	
 
 	void displayContainer(void);	//Will display the entire list.	//Depends how we do view layer.
-
 };
+
 
 
 
