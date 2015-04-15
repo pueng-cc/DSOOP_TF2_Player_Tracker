@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <iostream>
 #include "Player.h"
 
 using namespace std;
@@ -24,6 +25,7 @@ public:
 
 	//Mutators
 	bool AddToContainer(Player newPlayer);			//Will add a player class to the list.
+	bool CreateNewPlayer(string playerName, string playerClass, string weaponPrimary, string weaponSecondary, string weaponMelee, int numberOfHats = 0);
 	void DeleteFromContainer(string playerName);	//Will delete a player class from the list.
 	void DeleteContainer(void);						//Deletes the entire list.
 

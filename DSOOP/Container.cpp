@@ -89,6 +89,71 @@ bool Container::AddToContainer(Player newPlayer)
 	return returnValue;
 }
 
+///
+/// \brief Creates and adds a new player to the container
+/// \details <b>Details</b>
+///
+/// This methode is used to create and add a single object to the container.
+/// It will take input as the diffrent field of the object and use them to fill it in.
+///
+/// \param input - <b>string</b> - playerName - This is the player's name. Must be original.
+/// \param input - <b>string</b> - playerClass - This is the class the player plays.
+/// \param input - <b>string</b> - weaponPrimary - This is the players Primary weapon.
+/// \param input - <b>string</b> - weaponSecondary - This is the players Secondary weapon.
+/// \param input - <b>string</b> - weaponMelee - This is the players Melee weapon.
+/// \param input - <b>int</b> -  numberOfHats - This integet represents the number of hats the player owns.
+///
+/// \return - <b>bool</b> - true if the object was added to the Container. false if it was not.
+///
+bool Container::CreateNewPlayer(string playerName, string playerClass, string weaponPrimary, string weaponSecondary, string weaponMelee, int numberOfHats)
+{
+	Player tempPlayer;
+	bool returnValue = true;
+
+	if (tempPlayer.SetName(playerName) == false)	//Validates and adds the name to the tempPlayer.
+	{
+		printf("This name is not valid.");
+		returnValue = false;
+	}
+	if (tempPlayer.SetPlayerClass(playerClass) == false)	//Validates and adds the class to the tempPlayer.
+	{
+		printf("This class is not valid.");
+		returnValue = false;
+	}
+	
+	if (tempPlayer.SetPrimaryWeapon(weaponPrimary) == false)	//Validates and adds the primary to the tempPlayer.
+	{
+		printf("This primary weapon is not valid.");
+		returnValue = false;
+	}
+	
+	if (tempPlayer.SetSecondaryWeapon(weaponSecondary) == false)	//Validates and adds the secondary  to the tempPlayer.
+	{
+		printf("This secondary weapon is not valid.");
+		returnValue = false;
+	}
+	
+	if (tempPlayer.SetMeleeWeapon(weaponMelee) == false)	//Validates and adds the melee to the tempPlayer.
+	{
+		printf("This melee weapon is not valid.");
+		returnValue = false;
+	}
+	
+	if (tempPlayer.SetNumberOfHats(numberOfHats) == false)	//Validates and adds the number of hats to the tempPlayer.
+	{
+		printf("This number of hats is not valid.");
+		returnValue = false;
+	}
+	
+
+	if (AddToContainer(tempPlayer) == false)	//Checks if the tempPlayer was succesfully added to the container.
+	{
+		returnValue = false;
+	}
+
+	return returnValue;
+}
+
 
 ///
 /// \brief Deletes one Item from the Container
@@ -167,10 +232,81 @@ Player* Container::SearchByName(string searchName)
 }
 
 
+///
+/// \brief Gets a list of the players of that class
+/// \details <b>Details</b>
+///
+/// This methode will get a list of all the players that have that number of hats.
+/// It will add each name to a list each seperated by a "\n" so the view layer can retreive it.
+///
+/// \param input - <b>string</b> - Takes the class to search for.
+///
+/// \return <b>string</b> - Will return a string containing the name of each player by that class.
+///
+string Container::SearchByClass(string searchClass)
+{
+	string returnString;
 
+	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
+	while (myVectorIter != containerVector.end())	//Go until the end of list.
+	{
+		if (myVectorIter->GetPlayerClass() == searchClass)
+		{
+			returnString.append(myVectorIter->GetName());
+			returnString.append("\n");
+		}
+		myVectorIter++;
+	}
+
+	return returnString;
+}
+
+
+///
+/// \brief Gets a list of the players with n number of hats
+/// \details <b>Details</b>
+///
+/// This methode will get a list of all the players that have n number of hats.
+/// It will add each name to a list each seperated by a "\n" so the view layer can read and display them.
+///
+/// \param input - <b>int</b> - Takes and integer representing the number of hats to search for.
+///
+/// \return <b>string</b> - Returns a string containing the name of each player with n number of hats.
+///
+string Container::SearchByHats(int numOfHats)
+{
+	string returnString;
+
+	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
+	while (myVectorIter != containerVector.end())	//Go until the end of list.
+	{
+		if (myVectorIter->GetNumberOfHats() == numOfHats)
+		{
+			returnString.append(myVectorIter->GetName());
+			returnString.append("\n");
+		}
+		myVectorIter++;
+	}
+
+	return returnString;
+}
+
+
+///
+/// \brief Stores the Container to a file
+/// \details <b>Details</b>
+///
+/// This methode will store the content of the Container database to a file in the current directory.
+/// It stores each object seperated by a "\n" and each feild of the object is seperated by a "|".
+/// If there is no present it will create a new one.
+///
+/// \param input - This methode takes no parameters.
+///
+/// \return <b>bool</b> - Will return a true value if the file was succesfully stored. False otherwise.
+///
 bool Container::storeInFile(void)
 {
-	ofstream dataFile;
+	fstream dataFile;
 
 	bool returnValue = false;
 	bool errorStatus = false;
@@ -192,7 +328,13 @@ bool Container::storeInFile(void)
 	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
 	while (myVectorIter != containerVector.end())	//Go until the end of list.
 	{
-		dataFile << containerVector[iterCount];
+		dataFile << myVectorIter->GetName() << "\n";
+		dataFile << myVectorIter->GetPlayerClass() << "\n";
+		dataFile << myVectorIter->GetPrimaryWeapon() << "\n";
+		dataFile << myVectorIter->GetSecondaryWeapon() << "\n";
+		dataFile << myVectorIter->GetMeleeWeapon() << "\n";
+		dataFile << myVectorIter->GetNumberOfHats() << "\n";
+
 		myVectorIter++;
 		iterCount++;
 	}
@@ -202,10 +344,24 @@ bool Container::storeInFile(void)
 	return returnValue;
 }
 
+
+///
+/// \brief Retreive Container from a file
+/// \details <b>Details</b>
+///
+/// This methode will retreive the content of the Container database from a file in the current directory.
+///
+/// \param input - This methode takes no parameters.
+///
+/// \return <b>bool</b> - Will return a true value if the file was succesfully retreived. False otherwise.
+///
 bool Container::retreiveFromFile(void)
 {
-	ifstream dataFile;
+	fstream dataFile;
 	Player tempPlayer;
+	string attribute;
+	int tempNum = 0;
+
 
 	bool returnValue = false;
 	bool errorStatus = false;
@@ -223,44 +379,45 @@ bool Container::retreiveFromFile(void)
 		}
 	}
 
-	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
-	while (!dataFile.eof())	//Go until the end of list.
-	{
-		dataFile >> tempPlayer;
-		AddToContainer(tempPlayer);
-	}
 
-	dataFile.close();
+	while (getline(dataFile, attribute))
+	{
+		tempPlayer.SetName(attribute);
+
+		getline(dataFile, attribute);
+		tempPlayer.SetPlayerClass(attribute);
+
+		getline(dataFile, attribute);
+		tempPlayer.SetPrimaryWeapon(attribute);
+
+		getline(dataFile, attribute);
+		tempPlayer.SetSecondaryWeapon(attribute);
+
+		getline(dataFile, attribute);
+		tempPlayer.SetMeleeWeapon(attribute);
+
+		getline(dataFile, attribute);
+		tempNum = atoi(attribute.c_str());
+		tempPlayer.SetNumberOfHats(tempNum);
+
+		AddToContainer(tempPlayer);		//Add temp player to the database.
+	}
 
 	return returnValue;
 }
 
 
 
-
 //Temporary function. Sould probably be moved/integrated in the UI portion of the code.
 void Container::displayContainer(void)
 {
+	int count = 0;
 	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
 	while (myVectorIter != containerVector.end())	//Go until the end of list.
 	{
 
-		cout << myVectorIter->GetName() << endl;
-
+		cout << count << myVectorIter->GetName() << endl;
+		count++;
 		myVectorIter++;
 	}
-}
-
-
-ofstream& operator<< (ofstream& output, Player& obj)
-{
-	output << obj.name << "|" << obj.playerClass << "|" << obj.primaryWeapon << "|" << obj.secondaryWeapon << "|" << obj.meleeWeapon << "|" << obj.numberOfHats << "|\n";
-	return output;
-}
-
-ifstream& operator>> (ifstream& input, Player& obj)
-{
-	char fieldBreak;
-	input >> obj.name >> fieldBreak >> obj.playerClass >> fieldBreak >> obj.primaryWeapon >> fieldBreak >> obj.secondaryWeapon >> fieldBreak >> obj.meleeWeapon >> fieldBreak >> obj.numberOfHats >> fieldBreak;
-	return input;
 }
