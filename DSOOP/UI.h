@@ -19,9 +19,10 @@ private:
 	void DeletePlayerUI();
 	void SearchPlayerUI();
 	void DisplayOnePlayerUI(std::string playerInfo);
-//	void SearchByName();
-//	void SearchByClass();
-//	void SearchByNumberOfHats();
+	void DisplayManyPlayersUI(std::string allTheNames);
+	void SearchByNameUI();
+	void SearchByClassUI();
+	void SearchByNumberOfHatsUI();
 	void DisplayDatabaseUI();
 	void DeleteDatabaseUI();
 	void GenerateRandomPlayersUI();

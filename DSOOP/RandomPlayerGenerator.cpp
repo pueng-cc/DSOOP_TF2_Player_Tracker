@@ -5,8 +5,6 @@ std::string RandomPlayerGenerator::RandomString(int length)
 	std::string newRandomString = "";
 	int lengthCounter = 0;
 
-	srand(time(NULL));
-
 	newRandomString.resize(length);
 
 	while (lengthCounter < length)

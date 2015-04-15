@@ -327,6 +327,14 @@ bool Player::MustBeDemoman()
 	return isDemoman;
 }
 
+///
+/// \brief Checks whether the player is Demoman
+/// \details <b>Details</b>
+///
+/// Returns whether the player is a Demoman or not
+///
+/// \return <b>bool</b> - Whether the player is a Demoman.
+///
 bool Player::IsADemoman()
 {
 	bool isIndeedADemoman = false;

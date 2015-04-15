@@ -1,10 +1,28 @@
 #include "UI.h"
 
+///
+/// \brief Constructor of UI
+/// \details <b>Details</b>
+///
+/// Requires a pointer to the container so UI can call Container's methods.
+///
+/// \param newContainer - <b>Container*</b> - The pointer to the container that UI is going to manipulate.
+///
+/// \return Nothing
+///
 UI::UI(Container *newContainer)
 {
 	theContainer = newContainer;
 }
 
+///
+/// \brief Main Menu
+/// \details <b>Details</b>
+///
+/// Main menu of the program. Loops until user selects "0".
+///
+/// \return Nothing
+///
 void UI::MainMenuUI()
 {
 	char userMenuInput = 0;
@@ -58,6 +76,16 @@ void UI::MainMenuUI()
 	}
 }
 
+///
+/// \brief Add player UI
+/// \details <b>Details</b>
+///
+/// Allows user to enter each field of a player's information. Will loop until 
+/// the player information is saved to theContainer successfully or if the user 
+/// choose to exit by pressing "0".
+///
+/// \return Nothing
+///
 void UI::AddPlayerUI()
 {
 	std::string newName = "";
@@ -234,6 +262,32 @@ void UI::DeletePlayerUI()
 
 void UI::SearchPlayerUI()
 {
+	char userMenuInput = 0;
+	
+	while (userMenuInput != '0')
+	{
+		system("CLS");
+		printf("Select Search Parameter\n");
+		printf("\n");
+		printf("1) Search By Name\n");
+		printf("2) Search By Class\n");
+		printf("3) Search By Number Of Hats\n");
+		printf("\n");
+		printf("0) Return to Main Menu\n");
+		userMenuInput = getch();
+		if (userMenuInput == '1')
+		{
+			SearchByNameUI();
+		}
+		else if (userMenuInput == '2')
+		{
+			SearchByClassUI();
+		}
+		else if (userMenuInput == '3')
+		{
+			SearchByNumberOfHatsUI();
+		}
+	}
 }
 
 void UI::DisplayOnePlayerUI(std::string playerInfo)
@@ -278,6 +332,125 @@ void UI::DisplayOnePlayerUI(std::string playerInfo)
 	printf("Number of Hats: %d\n", tempNumberOfHats);
 }
 
+void UI::DisplayManyPlayersUI(std::string allTheNames)
+{
+	std::string namesToParse = allTheNames;
+	std::string nameBuffer = "";
+	int nextLineLocation = 0;
+	bool allNamesParsed = false;
+	int displayCounter = 0;
+
+	while (allNamesParsed == false)
+	{
+		nextLineLocation = namesToParse.find("\n");
+		if (nextLineLocation == -1)
+		{
+			allNamesParsed = true;
+		}
+		else
+		{
+			nameBuffer = namesToParse.substr(nextLineLocation - 1);
+			DisplayOnePlayerUI(theContainer->GetPlayerInfo(nameBuffer));
+			namesToParse.erase(nextLineLocation);
+			displayCounter++;
+		}
+		if (displayCounter == 3 && allNamesParsed == false)
+		{
+			printf("\n");
+			printf("Press any key to continue.");
+			getch();
+			displayCounter = 0;
+		}
+	}
+}
+
+void UI::SearchByNameUI()
+{
+	std::string nameToSearch = "";
+	std::string searchResult = "";
+	system("CLS");
+	printf("Search By Name\n");
+	printf("\n");
+	printf("Enter Name: ");
+	cin >> nameToSearch;
+	searchResult = theContainer->GetPlayerInfo(nameToSearch);
+	system("CLS");
+	if (searchResult.compare("") == 0)
+	{
+		printf("Error: Player with \"%s\" as name cannot be found\n");
+	}
+	else
+	{
+		DisplayOnePlayerUI(searchResult);
+	}
+	printf("\n");
+	printf("Press any key to continue.");
+	getch();
+}
+
+void UI::SearchByClassUI()
+{
+	std::string classToSearch = "";
+	std::string searchResult = "";
+	char userMenuInput = 0;
+	system("CLS");
+	printf("Search By Class\n");
+	printf("\n");
+	while (userMenuInput < '1' || userMenuInput > '9')
+	{
+		userMenuInput = getch();
+
+		if (userMenuInput == '1')
+		{
+			classToSearch = "Scout";
+		}
+		else if (userMenuInput == '2')
+		{
+			classToSearch = "Soldier";
+		}
+		else if (userMenuInput == '3')
+		{
+			classToSearch = "Pyro";
+		}
+		else if (userMenuInput == '4')
+		{
+			classToSearch = "Demoman";
+		}
+		else if (userMenuInput == '5')
+		{
+			classToSearch = "Heavy";
+		}
+		else if (userMenuInput == '6')
+		{
+			classToSearch = "Engineer";
+		}
+		else if (userMenuInput == '7')
+		{
+			classToSearch = "Medic";
+		}
+		else if (userMenuInput == '8')
+		{
+			classToSearch = "Sniper";
+		}
+		else if (userMenuInput == '9')
+		{
+			classToSearch = "Spy";
+		}
+	}
+
+	searchResult = theContainer->SearchByClass(classToSearch);
+	DisplayManyPlayersUI(searchResult);
+	printf("\n");
+	printf("All players with matching class has been displayed.");
+	printf("\n");
+	printf("Press any key to continue.");
+	getch();
+}
+
+void UI::SearchByNumberOfHatsUI()
+{
+}
+
 void UI::DisplayDatabaseUI()
 {
 	theContainer->DisplayContainer();	//Cheaty display methode. This is subject to change.
@@ -314,6 +487,7 @@ void UI::GenerateRandomPlayersUI()
 	getline(cin, stringBuffer);
 	numberOfRandomPlayers = atoi(stringBuffer.c_str());
 	system("CLS");
+	srand(time(NULL));
 	while (randomPlayerCounter < numberOfRandomPlayers)
 	{
 		tempPlayerClass = RandomPlayerGenerator::RandomPlayerClass();
@@ -350,7 +524,6 @@ void UI::GenerateRandomPlayersUI()
 void UI::UIDriver()
 {
 	theContainer->RetreiveFromFile();
-	srand(time(NULL));
 	MainMenuUI();
 	theContainer->StoreInFile();
 }
