@@ -17,13 +17,13 @@ private:
 	// Single field validations
 	static bool ValidateName(std::string); // Max length 32. ASCII 32 ~ 126. Cannot be repeated.
 	static bool ValidatePlayerClass(std::string); // Can only be Scout, Soldier, Pyro, Demoman, Heavy, Engineer, Medic, Sniper, or Spy. Non-case sensitive but will always be stored with capitalized first character followed by lower cases.
-	static bool ValidatePrimaryWeapon(std::string); // Max length 64. ASCII 32 ~ 126
-	static bool ValidateSecondaryWeapon(std::string); // Max length 64. ASCII 32 ~ 126
-	static bool ValidateMeleeWeapon(std::string); // Max length 64. ASCII 32 ~ 126
+	static bool ValidatePrimaryWeapon(std::string); // Max length 32. ASCII 32 ~ 126
+	static bool ValidateSecondaryWeapon(std::string); // Max length 32. ASCII 32 ~ 126
+	static bool ValidateMeleeWeapon(std::string); // Max length 32. ASCII 32 ~ 126
 	static bool ValidateNumberOfHats(int); // 0 or more
 
 	// Validate generic string, given the string to be validated and max length.
-	static bool ValidateString(std::string, int);
+	static bool ValidateString(std::string, size_t);
 
 	// Since all 3 weaopns follow the same rules at the moment, here's a generic validator:
 	static bool ValidateWeapon(std::string);
