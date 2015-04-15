@@ -486,78 +486,80 @@ void Container::displayContainer(void)
 bool Container::CrossFieldValidation(Player playerToValidate)
 {
 	bool returnValue = true;
-	
-	if (playerToValidate.GetName().compare("demoman"))		//Validate the if the player is a demoman.
+	string playerClass = playerToValidate.GetPlayerClass;
+
+	if (playerToValidate.MustBeDemoman() == false)
 	{
-		if (playerToValidate.MustBeDemoman() == false)
-		{
-			returnValue = false;
-			throw ("If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman.");
-		}
+		returnValue = false;
+		throw ("If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman.");
 	}
-	else if (playerToValidate.GetName().compare("scout"))	//Validate if the player is a scout.
+	else
 	{
-		if (playerToValidate.ValidateScout() == false)
+		if (playerClass.compare("Scout"))	//Validate if the player is a scout.
 		{
-			returnValue = false;
-			throw ("Scout’s primary weapon must contain “shotgun”.");
+			if (playerToValidate.ValidateScout() == false)
+			{
+				returnValue = false;
+				throw ("Scout’s primary weapon must contain “shotgun”.");
+			}
 		}
-	}
-	else if (playerToValidate.GetName().compare("soldier"))	//Validate if the player is a soldier.
-	{
-		if (playerToValidate.ValidateSoldier() == false)
+		else if (playerClass.compare("Soldier"))	//Validate if the player is a soldier.
 		{
-			returnValue = false;
-			throw ("Soldier’s secondary weapon must contain “shotgun”.");
+			if (playerToValidate.ValidateSoldier() == false)
+			{
+				returnValue = false;
+				throw ("Soldier’s secondary weapon must contain “shotgun”.");
+			}
 		}
-	}
-	else if (playerToValidate.GetName().compare("pyro"))	//Validate if the player is a pyro.
-	{
-		if (playerToValidate.ValidatePyro() == false)
+		else if (playerClass.compare("Pyro"))	//Validate if the player is a pyro.
 		{
-			returnValue = false;
-			throw ("At least one of Pyro’s weapon must contain “rainbow”.");
+			if (playerToValidate.ValidatePyro() == false)
+			{
+				returnValue = false;
+				throw ("At least one of Pyro’s weapon must contain “rainbow”.");
+			}
 		}
-	}
-	else if (playerToValidate.GetName().compare("heavy"))	//Validate if the player is a pyro.
-	{
-		if (playerToValidate.ValidateHeavy() == false)
+		else if (playerClass.compare("Heavy"))	//Validate if the player is a pyro.
 		{
-			returnValue = false;
-			throw ("Heavy’s melee weapon can only be [blank], “fist”, “fists”, or “sandvich”. None of its fields can contain “smart”.");
+			if (playerToValidate.ValidateHeavy() == false)
+			{
+				returnValue = false;
+				throw ("Heavy’s melee weapon can only be [blank], “fist”, “fists”, or “sandvich”. None of its fields can contain “smart”.");
+			}
 		}
-	}
-	else if (playerToValidate.GetName().compare("engineer"))	//Validate if the player is a pyro.
-	{
-		if (playerToValidate.ValidateEngineer() == false)
+		else if (playerClass.compare("Engineer"))	//Validate if the player is a pyro.
 		{
-			returnValue = false;
-			throw ("One of Engineer’s weapon must contain “Stool”, “Chair”, or “Sittable”(case sensitive)");
+			if (playerToValidate.ValidateEngineer() == false)
+			{
+				returnValue = false;
+				throw ("One of Engineer’s weapon must contain “Stool”, “Chair”, or “Sittable”(case sensitive)");
+			}
 		}
-	}
-	else if (playerToValidate.GetName().compare("medic"))	//Validate if the player is a pyro.
-	{
-		if (playerToValidate.ValidateMedic() == false)
+		else if (playerClass.compare("Medic"))	//Validate if the player is a pyro.
 		{
-			returnValue = false;
-			throw ("The word “heal” must appear at least three times across the three weapons of a Medic.");
+			if (playerToValidate.ValidateMedic() == false)
+			{
+				returnValue = false;
+				throw ("The word “heal” must appear at least three times across the three weapons of a Medic.");
+			}
 		}
-	}
-	else if (playerToValidate.GetName().compare("sniper"))	//Validate if the player is a pyro.
-	{
-		if (playerToValidate.ValidateSniper() == false)
+		else if (playerClass.compare("Sniper"))	//Validate if the player is a pyro.
 		{
-			returnValue = false;
-			throw ("Sniper has to have at least 5 hats to be valid.");
+			if (playerToValidate.ValidateSniper() == false)
+			{
+				returnValue = false;
+				throw ("Sniper has to have at least 5 hats to be valid.");
+			}
 		}
-	}
-	else if (playerToValidate.GetName().compare("sniper"))	//Validate if the player is a pyro.
-	{
-		if (playerToValidate.ValidateSniper() == false)
+		else if (playerClass.compare("Spy"))	//Validate if the player is a pyro.
 		{
-			returnValue = false;
-			throw ("All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet”.");
+			if (playerToValidate.ValidateSniper() == false)
+			{
+				returnValue = false;
+				throw ("All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet”.");
+			}
 		}
+		
 	}
 
 	return returnValue;
