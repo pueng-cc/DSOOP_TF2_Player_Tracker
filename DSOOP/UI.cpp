@@ -193,7 +193,7 @@ void UI::AddPlayerUI()
 		{
 			try
 			{
-				complete = theContainer->ConvertInputToPlayer(newName, newPlayerClass, newPrimaryWeapon, newSecondaryWeapon, newMeleeWeapon, newNumberOfHats);
+				complete = theContainer->CreateNewPlayer(newName, newPlayerClass, newPrimaryWeapon, newSecondaryWeapon, newMeleeWeapon, newNumberOfHats);
 				if (complete == true)
 				{
 					system("CLS");
