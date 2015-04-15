@@ -16,7 +16,7 @@
 ///
 Container::Container()
 {
-
+	//Nothing happens in Constructor currently.
 }
 
 
@@ -33,7 +33,7 @@ Container::Container()
 ///
 Container::~Container()
 {
-
+	//Nothing happens in destructor currently.
 }
 
 
@@ -113,41 +113,41 @@ bool Container::CreateNewPlayer(string playerName, string playerClass, string we
 	if (tempPlayer.SetName(playerName) == false)	//Validates and adds the name to the tempPlayer.
 	{
 		returnValue = false;
-		throw "This name is not valid.";
+		throw ("This name is not valid.");
 	}
 
 	if (tempPlayer.SetPlayerClass(playerClass) == false)	//Validates and adds the class to the tempPlayer.
 	{
 		returnValue = false;
-		throw "This class is not valid.";
+		throw ("This class is not valid.");
 	}
 	
 	if (tempPlayer.SetPrimaryWeapon(weaponPrimary) == false)	//Validates and adds the primary to the tempPlayer.
 	{
 		returnValue = false;
-		throw "This primary weapon is not valid.";
+		throw ("This primary weapon is not valid.");
 	}
 	
 	if (tempPlayer.SetSecondaryWeapon(weaponSecondary) == false)	//Validates and adds the secondary  to the tempPlayer.
 	{
-		throw "This secondary weapon is not valid.";
+		throw ("This secondary weapon is not valid.");
 		returnValue = false;
 	}
 	
 	if (tempPlayer.SetMeleeWeapon(weaponMelee) == false)	//Validates and adds the melee to the tempPlayer.
 	{
 		returnValue = false;
-		throw "This melee weapon is not valid.";
+		throw ("This melee weapon is not valid.");
 	}
 	
 	if (tempPlayer.SetNumberOfHats(numberOfHats) == false)	//Validates and adds the number of hats to the tempPlayer.
 	{
 		returnValue = false;
-		throw "This number of hats is not valid.";
+		throw ("This number of hats is not valid.");
 	}
 	
 	//Cross field validation.
-	if (crossFieldValidation(tempPlayer) == false)
+	if (CrossFieldValidation(tempPlayer) == false)
 	{
 		returnValue = false;
 	}
@@ -492,7 +492,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.MustBeDemoman() == false)
 		{
 			returnValue = false;
-			throw "If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman.";
+			throw ("If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman.");
 		}
 	}
 	else if (playerToValidate.GetName().compare("scout"))	//Validate if the player is a scout.
@@ -500,7 +500,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidateScout() == false)
 		{
 			returnValue = false;
-			throw "Scout’s primary weapon must contain “shotgun”.";
+			throw ("Scout’s primary weapon must contain “shotgun”.");
 		}
 	}
 	else if (playerToValidate.GetName().compare("soldier"))	//Validate if the player is a soldier.
@@ -508,7 +508,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidateSoldier() == false)
 		{
 			returnValue = false;
-			throw "Soldier’s secondary weapon must contain “shotgun”.";
+			throw ("Soldier’s secondary weapon must contain “shotgun”.");
 		}
 	}
 	else if (playerToValidate.GetName().compare("pyro"))	//Validate if the player is a pyro.
@@ -516,7 +516,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidatePyro() == false)
 		{
 			returnValue = false;
-			throw "At least one of Pyro’s weapon must contain “rainbow”.";
+			throw ("At least one of Pyro’s weapon must contain “rainbow”.");
 		}
 	}
 	else if (playerToValidate.GetName().compare("heavy"))	//Validate if the player is a pyro.
@@ -524,7 +524,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidateHeavy() == false)
 		{
 			returnValue = false;
-			throw "Heavy’s melee weapon can only be [blank], “fist”, “fists”, or “sandvich”. None of its fields can contain “smart”.";
+			throw ("Heavy’s melee weapon can only be [blank], “fist”, “fists”, or “sandvich”. None of its fields can contain “smart”.");
 		}
 	}
 	else if (playerToValidate.GetName().compare("engineer"))	//Validate if the player is a pyro.
@@ -532,7 +532,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidateEngineer() == false)
 		{
 			returnValue = false;
-			throw "One of Engineer’s weapon must contain “Stool”, “Chair”, or “Sittable”(case sensitive)";
+			throw ("One of Engineer’s weapon must contain “Stool”, “Chair”, or “Sittable”(case sensitive)");
 		}
 	}
 	else if (playerToValidate.GetName().compare("medic"))	//Validate if the player is a pyro.
@@ -540,7 +540,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidateMedic() == false)
 		{
 			returnValue = false;
-			throw "The word “heal” must appear at least three times across the three weapons of a Medic.";
+			throw ("The word “heal” must appear at least three times across the three weapons of a Medic.");
 		}
 	}
 	else if (playerToValidate.GetName().compare("sniper"))	//Validate if the player is a pyro.
@@ -548,7 +548,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidateSniper() == false)
 		{
 			returnValue = false;
-			throw "Sniper has to have at least 5 hats to be valid.";
+			throw ("Sniper has to have at least 5 hats to be valid.");
 		}
 	}
 	else if (playerToValidate.GetName().compare("sniper"))	//Validate if the player is a pyro.
@@ -556,7 +556,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		if (playerToValidate.ValidateSniper() == false)
 		{
 			returnValue = false;
-			throw "All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet”.";
+			throw ("All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet”.");
 		}
 	}
 
