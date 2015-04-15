@@ -80,12 +80,14 @@
   <ItemGroup>
     <ClInclude Include="Container.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RandomPlayerGenerator.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RandomPlayerGenerator.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
