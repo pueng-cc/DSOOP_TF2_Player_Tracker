@@ -53,9 +53,10 @@ bool Container::AddToContainer(Player newPlayer)
 	bool returnValue = false;		//If it was added to the Container or not.
 	bool continueLooping = true;	//Too continue looping or not.
 
-	if (containerVector.size() < 1)
+	if (containerVector.size() == 0)
 	{
 		containerVector.push_back(newPlayer);
+		returnValue = true;
 	}
 	else
 	{
@@ -457,20 +458,6 @@ bool Container::RetreiveFromFile(void)
 
 
 
-//Temporary function. Sould probably be moved/integrated in the UI portion of the code.
-void Container::displayContainer(void)
-{
-	int count = 0;
-	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
-	while (myVectorIter != containerVector.end())	//Go until the end of list.
-	{
-
-		cout << count << myVectorIter->GetName() << endl;
-		count++;
-		myVectorIter++;
-	}
-}
-
 
 ///
 /// \brief Validates a Player object.
@@ -486,64 +473,67 @@ void Container::displayContainer(void)
 bool Container::CrossFieldValidation(Player playerToValidate)
 {
 	bool returnValue = true;
-	string playerClass = playerToValidate.GetPlayerClass;
+	string playerClass = playerToValidate.GetPlayerClass();
 
 	if (playerToValidate.MustBeDemoman() == true)
 	{
-		returnValue = false;
-		throw ("If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman.");
+		if (playerToValidate.IsADemoman() == false)
+		{
+			returnValue = false;
+			throw ("If player's name includes \"Smith\", \"Brown\", \"Wilson\", \"Robertson\", or \"Thomson\", the only valid class is Demoman.");
+		}
 	}
 	else
 	{
-		if (playerClass.compare("Scout"))	//Validate if the player is a scout.
+		if (playerClass.compare("Scout") == 0)	//Validate if the player is a scout.
 		{
 			if (playerToValidate.ValidateScout() == false)
 			{
 				returnValue = false;
-				throw ("Scout’s primary weapon must contain “shotgun”.");
+				throw ("Scout's primary weapon must contain \"shotgun\".");
 			}
 		}
-		else if (playerClass.compare("Soldier"))	//Validate if the player is a soldier.
+		else if (playerClass.compare("Soldier") == 0)	//Validate if the player is a soldier.
 		{
 			if (playerToValidate.ValidateSoldier() == false)
 			{
 				returnValue = false;
-				throw ("Soldier’s secondary weapon must contain “shotgun”.");
+				throw ("Soldier's secondary weapon must contain \"shotgun\".");
 			}
 		}
-		else if (playerClass.compare("Pyro"))	//Validate if the player is a pyro.
+		else if (playerClass.compare("Pyro") == 0)	//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidatePyro() == false)
 			{
 				returnValue = false;
-				throw ("At least one of Pyro’s weapon must contain “rainbow”.");
+				throw ("At least one of Pyro's weapon must contain \"rainbow\".");
 			}
 		}
-		else if (playerClass.compare("Heavy"))	//Validate if the player is a pyro.
+		else if (playerClass.compare("Heavy") == 0)	//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateHeavy() == false)
 			{
 				returnValue = false;
-				throw ("Heavy’s melee weapon can only be [blank], “fist”, “fists”, or “sandvich”. None of its fields can contain “smart”.");
+				throw ("Heavy’s melee weapon can only be [blank], \"fist\", \"fists\", or \"sandvich\". None of its fields can contain \"smart\".");
 			}
 		}
-		else if (playerClass.compare("Engineer"))	//Validate if the player is a pyro.
+		else if (playerClass.compare("Engineer") == 0)	//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateEngineer() == false)
 			{
 				returnValue = false;
-				throw ("One of Engineer’s weapon must contain “Stool”, “Chair”, or “Sittable”(case sensitive)");
+				throw ("One of Engineer’s weapon must contain \"Stool\", \"Chair\", or \"Sittable\"(case sensitive)");
 			}
 		}
-		else if (playerClass.compare("Medic"))	//Validate if the player is a pyro.
+		else if (playerClass.compare("Medic") == 0)	//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateMedic() == false)
 			{
 				returnValue = false;
-				throw ("The word “heal” must appear at least three times across the three weapons of a Medic.");
+				throw ("The word \"heal\" must appear at least three times across the three weapons of a Medic.");
 			}
 		}
-		else if (playerClass.compare("Sniper"))	//Validate if the player is a pyro.
+		else if (playerClass.compare("Sniper") == 0)	//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateSniper() == false)
 			{
@@ -551,16 +541,36 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 				throw ("Sniper has to have at least 5 hats to be valid.");
 			}
 		}
-		else if (playerClass.compare("Spy"))	//Validate if the player is a pyro.
+		else if (playerClass.compare("Spy") == 0)	//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateSniper() == false)
 			{
 				returnValue = false;
-				throw ("All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet”.");
+				throw ("All of Spy's weapons must include the any of the following words: \"Sneaky\", \"Silent\", \"Discreet\".");
 			}
 		}
 		
 	}
 
 	return returnValue;
+}
+
+//Temporary function. Sould probably be moved/integrated in the UI portion of the code.
+void Container::DisplayContainer(void)
+{
+	int count = 0;
+	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
+	while (myVectorIter != containerVector.end())	//Go until the end of list.
+	{
+
+		cout << myVectorIter->GetName() << endl;
+		cout << myVectorIter->GetPlayerClass() << endl;
+		cout << myVectorIter->GetPrimaryWeapon() << endl;
+		cout << myVectorIter ->GetSecondaryWeapon() << endl;
+		cout << myVectorIter ->GetMeleeWeapon() << endl;
+		cout << myVectorIter ->GetNumberOfHats() << endl << endl;
+
+		count++;
+		myVectorIter++;
+	}
 }

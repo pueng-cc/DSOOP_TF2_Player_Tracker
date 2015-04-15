@@ -46,7 +46,7 @@ public:
 	bool CrossFieldValidation(Player playerToValidate);		//Goes through each of he possible cross field validations for the player object.
 	
 
-	void displayContainer(void);	//Will display the entire list.	//Depends how we do view layer.
+	void DisplayContainer(void);	//Will display the entire list.	//Depends how we do view layer.
 };
 
 

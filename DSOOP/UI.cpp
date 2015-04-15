@@ -280,6 +280,8 @@ void UI::DisplayOnePlayerUI(std::string playerInfo)
 
 void UI::DisplayDatabaseUI()
 {
+	theContainer->DisplayContainer();	//Cheaty display methode. This is subject to change.
+	getch();
 }
 
 void UI::DeleteDatabaseUI()
