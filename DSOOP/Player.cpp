@@ -129,7 +129,7 @@ bool Player::ValidateNumberOfHats(int input)
 
 	if (input >= 0)
 	{
-		isValid = false;
+		isValid = true;
 	}
 
 	return isValid;
@@ -322,6 +322,14 @@ bool Player::MustBeDemoman()
 	else if (name.find("Thomson") != -1)
 	{
 		isDemoman = true;
+	}
+
+	if (isDemoman == true)
+	{
+		if (playerClass.compare("Demoman") != 0)
+		{
+			isDemoman = false;
+		}
 	}
 
 	return isDemoman;

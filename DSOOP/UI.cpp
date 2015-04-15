@@ -311,7 +311,8 @@ void UI::GenerateRandomPlayersUI()
 	printf("Enter Number of Random Players to Generate: ");
 	getline(cin, stringBuffer);
 	numberOfRandomPlayers = atoi(stringBuffer.c_str());
-	while (randomPlayerCounter <= numberOfRandomPlayers)
+	system("CLS");
+	while (randomPlayerCounter < numberOfRandomPlayers)
 	{
 		tempPlayerClass = RandomPlayerGenerator::RandomPlayerClass();
 		tempName = RandomPlayerGenerator::RandomName(tempPlayerClass);
@@ -319,8 +320,14 @@ void UI::GenerateRandomPlayersUI()
 		tempSecondaryWeapon = RandomPlayerGenerator::RandomSecondaryWeapon(tempPlayerClass);
 		tempMeleeWeapon = RandomPlayerGenerator::RandomMeleeWeapon(tempPlayerClass);
 		tempNumberOfHats = RandomPlayerGenerator::RandomNumberOfHats(tempPlayerClass);
-		generateSuccessful = theContainer->CreateNewPlayer(tempName, tempPlayerClass, tempPrimaryWeapon, tempSecondaryWeapon, tempMeleeWeapon, tempNumberOfHats);
-
+		try
+		{
+			generateSuccessful = theContainer->CreateNewPlayer(tempName, tempPlayerClass, tempPrimaryWeapon, tempSecondaryWeapon, tempMeleeWeapon, tempNumberOfHats);
+		}
+		catch (char* exceptionMessage)
+		{
+			printf("Error: %s\n", exceptionMessage);
+		}
 		if (generateSuccessful == true)
 		{
 			successCounter++;
@@ -329,8 +336,8 @@ void UI::GenerateRandomPlayersUI()
 		{
 			errorCounter++;
 		}
+		randomPlayerCounter++;
 	}
-	system("CLS");
 	printf("Random Player Generation Successful: %d\n", successCounter);
 	printf("Random Player Generation Failed: %d\n", errorCounter);
 	printf("\n");
@@ -340,5 +347,8 @@ void UI::GenerateRandomPlayersUI()
 
 void UI::UIDriver()
 {
+	theContainer->RetreiveFromFile();
+	srand(time(NULL));
 	MainMenuUI();
+	theContainer->StoreInFile();
 }

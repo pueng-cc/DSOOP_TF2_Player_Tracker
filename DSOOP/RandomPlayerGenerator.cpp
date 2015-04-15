@@ -5,12 +5,14 @@ std::string RandomPlayerGenerator::RandomString(int length)
 	std::string newRandomString = "";
 	int lengthCounter = 0;
 
+	srand(time(NULL));
+
 	newRandomString.resize(length);
 
 	while (lengthCounter < length)
 	{
 		// 94 + 32
-		srand(time(NULL));
+		
 		newRandomString[lengthCounter] = rand() % 94 + 32;
 		lengthCounter++;
 	}
@@ -27,7 +29,7 @@ std::string RandomPlayerGenerator::RandomName(string playerClass)
 
 	if (playerClass.compare("Demoman") == 0)
 	{
-		srand(time(NULL));
+		
 		randomNumber = rand() % 5;
 		if (randomNumber == 0)
 		{
@@ -50,7 +52,7 @@ std::string RandomPlayerGenerator::RandomName(string playerClass)
 			newRandomName.append(" Thomson");
 		}
 	}
-	return std::string();
+	return newRandomName;
 }
 
 std::string RandomPlayerGenerator::RandomPlayerClass()
@@ -58,7 +60,7 @@ std::string RandomPlayerGenerator::RandomPlayerClass()
 	std::string newRandomClass = "";
 	int randomNumber = 0;
 
-	srand(time(NULL));
+	
 	randomNumber = rand() % 9;
 
 	if (randomNumber == 0)
@@ -105,7 +107,7 @@ std::string RandomPlayerGenerator::RandomPrimaryWeapon(string playerClass)
 {
 	std::string newRandomPrimary = "";
 
-	srand(time(NULL));
+	
 	newRandomPrimary = RandomString(12);
 
 	if (playerClass.compare("Scout") == 0)
@@ -123,7 +125,7 @@ std::string RandomPlayerGenerator::RandomSecondaryWeapon(string playerClass)
 {
 	std::string newRandomSecondary = "";
 
-	srand(time(NULL));
+	
 	newRandomSecondary = RandomString(12);
 
 	if (playerClass.compare("Soldier") == 0)
@@ -144,7 +146,7 @@ std::string RandomPlayerGenerator::RandomMeleeWeapon(string playerClass)
 
 	if (playerClass.compare("Engineer") == 0)
 	{
-		srand(time(NULL));
+		
 		randomNumber = rand() % 2;
 		if (randomNumber == 0)
 		{
@@ -157,7 +159,7 @@ std::string RandomPlayerGenerator::RandomMeleeWeapon(string playerClass)
 	}
 	else if (playerClass.compare("Heavy") == 0)
 	{
-		srand(time(NULL));
+		
 		randomNumber = rand() % 3;
 		if (randomNumber == 0)
 		{
@@ -195,7 +197,7 @@ int RandomPlayerGenerator::RandomNumberOfHats(string playerClass)
 {
 	int newRandomNumberOfHats = 0;
 
-	srand(time(NULL));
+	
 	newRandomNumberOfHats = rand() % 10000;
 
 	if (playerClass.compare("Sniper") == 0)
