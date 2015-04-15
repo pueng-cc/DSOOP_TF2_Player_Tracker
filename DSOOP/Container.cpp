@@ -112,39 +112,46 @@ bool Container::CreateNewPlayer(string playerName, string playerClass, string we
 
 	if (tempPlayer.SetName(playerName) == false)	//Validates and adds the name to the tempPlayer.
 	{
-		printf("This name is not valid.");
 		returnValue = false;
+		throw "This name is not valid.";
 	}
+
 	if (tempPlayer.SetPlayerClass(playerClass) == false)	//Validates and adds the class to the tempPlayer.
 	{
-		printf("This class is not valid.");
 		returnValue = false;
+		throw "This class is not valid.";
 	}
 	
 	if (tempPlayer.SetPrimaryWeapon(weaponPrimary) == false)	//Validates and adds the primary to the tempPlayer.
 	{
-		printf("This primary weapon is not valid.");
 		returnValue = false;
+		throw "This primary weapon is not valid.";
 	}
 	
 	if (tempPlayer.SetSecondaryWeapon(weaponSecondary) == false)	//Validates and adds the secondary  to the tempPlayer.
 	{
-		printf("This secondary weapon is not valid.");
+		throw "This secondary weapon is not valid.";
 		returnValue = false;
 	}
 	
 	if (tempPlayer.SetMeleeWeapon(weaponMelee) == false)	//Validates and adds the melee to the tempPlayer.
 	{
-		printf("This melee weapon is not valid.");
 		returnValue = false;
+		throw "This melee weapon is not valid.";
 	}
 	
 	if (tempPlayer.SetNumberOfHats(numberOfHats) == false)	//Validates and adds the number of hats to the tempPlayer.
 	{
-		printf("This number of hats is not valid.");
 		returnValue = false;
+		throw "This number of hats is not valid.";
 	}
 	
+	//Cross field validation.
+	if (crossFieldValidation(tempPlayer) == false)
+	{
+		returnValue = false;
+	}
+
 
 	if (AddToContainer(tempPlayer) == false)	//Checks if the tempPlayer was succesfully added to the container.
 	{
@@ -166,12 +173,16 @@ bool Container::CreateNewPlayer(string playerName, string playerClass, string we
 ///
 /// \return - This methode retuns nothing.
 ///
-void Container::DeleteFromContainer(string playerName)
+bool Container::DeleteFromContainer(string playerName)
 {
-	if (SearchByName(playerName) != NULL)
+	bool returnValue = false;
+	if (GetByName(playerName) != NULL)
 	{
 		containerVector.erase(myVectorIter);	//Deletes What is at the iter set by the Search methode.
+		returnValue = true;
 	}
+
+	return returnValue;
 }
 
 
@@ -204,7 +215,7 @@ void Container::DeleteContainer(void)
 ///
 /// \return <b>Player*</b> - Will return a pointer to the object if it exists. Otherwise will return NULL.
 ///
-Player* Container::SearchByName(string searchName)
+Player* Container::GetByName(string searchName)
 {
 	Player* searchResult = NULL;
 	bool foundItem = false;
@@ -231,6 +242,44 @@ Player* Container::SearchByName(string searchName)
 	return searchResult;
 }
 
+///
+/// \brief Gets a the player information
+/// \details <b>Details</b>
+///
+/// This methode will get the players information and return all the fields in a single string.
+/// Each field will be delimited by a "\n".
+///
+/// \param input - <b>string</b> - Takes the class to search for.
+///
+/// \return <b>string</b> - Will return a string containing the name of each player by that class.
+/// \see GetByName()
+string Container::GetPlayerInfo(string searchClass)
+{
+	string returnString;
+	string tempString;
+	Player* tempPlayer = GetByName(searchClass);
+
+	returnString.append(tempPlayer->GetName());				//Appends the name and then a new line.
+	returnString.append("\n");
+
+	returnString.append(tempPlayer->GetPlayerClass());		//Appends the class and then a new line.
+	returnString.append("\n");
+
+	returnString.append(tempPlayer->GetPrimaryWeapon());	//Appends the primary weapon and then a new line.
+	returnString.append("\n");
+
+	returnString.append(tempPlayer->GetSecondaryWeapon());	//Appends the secondary weapon and then a new line.
+	returnString.append("\n");
+
+	returnString.append(tempPlayer->GetMeleeWeapon());		//Appends the melee weapon and then a new line.
+	returnString.append("\n");
+
+	tempString = tempPlayer->GetNumberOfHats();				//Converts the numberOfHats in to a string.
+	returnString.append(tempString);						//Then Appends the numberOfHats and then a new line.
+	returnString.append("\n");
+
+	return returnString;
+}
 
 ///
 /// \brief Gets a list of the players of that class
@@ -304,7 +353,7 @@ string Container::SearchByHats(int numOfHats)
 ///
 /// \return <b>bool</b> - Will return a true value if the file was succesfully stored. False otherwise.
 ///
-bool Container::storeInFile(void)
+bool Container::StoreInFile(void)
 {
 	fstream dataFile;
 
@@ -355,7 +404,7 @@ bool Container::storeInFile(void)
 ///
 /// \return <b>bool</b> - Will return a true value if the file was succesfully retreived. False otherwise.
 ///
-bool Container::retreiveFromFile(void)
+bool Container::RetreiveFromFile(void)
 {
 	fstream dataFile;
 	Player tempPlayer;
@@ -420,4 +469,96 @@ void Container::displayContainer(void)
 		count++;
 		myVectorIter++;
 	}
+}
+
+
+///
+/// \brief Validates a Player object.
+/// \details <b>Details</b>
+///
+/// This methode will validate a Player object passed in to it.
+/// It ensures that the cross field validation is valid for all circumstances.
+///
+/// \param input - <b>Player</b> - This is the player object you wish to validate.
+///
+/// \return <b>bool</b> - Will return a true value if the validation was succesful. False otherwise.
+///
+bool Container::CrossFieldValidation(Player playerToValidate)
+{
+	bool returnValue = true;
+	
+	if (playerToValidate.GetName().compare("demoman"))		//Validate the if the player is a demoman.
+	{
+		if (playerToValidate.MustBeDemoman() == false)
+		{
+			returnValue = false;
+			throw "If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman.";
+		}
+	}
+	else if (playerToValidate.GetName().compare("scout"))	//Validate if the player is a scout.
+	{
+		if (playerToValidate.ValidateScout() == false)
+		{
+			returnValue = false;
+			throw "Scout’s primary weapon must contain “shotgun”.";
+		}
+	}
+	else if (playerToValidate.GetName().compare("soldier"))	//Validate if the player is a soldier.
+	{
+		if (playerToValidate.ValidateSoldier() == false)
+		{
+			returnValue = false;
+			throw "Soldier’s secondary weapon must contain “shotgun”.";
+		}
+	}
+	else if (playerToValidate.GetName().compare("pyro"))	//Validate if the player is a pyro.
+	{
+		if (playerToValidate.ValidatePyro() == false)
+		{
+			returnValue = false;
+			throw "At least one of Pyro’s weapon must contain “rainbow”.";
+		}
+	}
+	else if (playerToValidate.GetName().compare("heavy"))	//Validate if the player is a pyro.
+	{
+		if (playerToValidate.ValidateHeavy() == false)
+		{
+			returnValue = false;
+			throw "Heavy’s melee weapon can only be [blank], “fist”, “fists”, or “sandvich”. None of its fields can contain “smart”.";
+		}
+	}
+	else if (playerToValidate.GetName().compare("engineer"))	//Validate if the player is a pyro.
+	{
+		if (playerToValidate.ValidateEngineer() == false)
+		{
+			returnValue = false;
+			throw "One of Engineer’s weapon must contain “Stool”, “Chair”, or “Sittable”(case sensitive)";
+		}
+	}
+	else if (playerToValidate.GetName().compare("medic"))	//Validate if the player is a pyro.
+	{
+		if (playerToValidate.ValidateMedic() == false)
+		{
+			returnValue = false;
+			throw "The word “heal” must appear at least three times across the three weapons of a Medic.";
+		}
+	}
+	else if (playerToValidate.GetName().compare("sniper"))	//Validate if the player is a pyro.
+	{
+		if (playerToValidate.ValidateSniper() == false)
+		{
+			returnValue = false;
+			throw "Sniper has to have at least 5 hats to be valid.";
+		}
+	}
+	else if (playerToValidate.GetName().compare("sniper"))	//Validate if the player is a pyro.
+	{
+		if (playerToValidate.ValidateSniper() == false)
+		{
+			returnValue = false;
+			throw "All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet”.";
+		}
+	}
+
+	return returnValue;
 }
