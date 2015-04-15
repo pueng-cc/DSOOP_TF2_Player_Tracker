@@ -211,10 +211,10 @@ void UI::AddPlayerUI()
 					getch();
 				}
 			}
-			catch(string exceptionMessage)
+			catch(char* exceptionMessage)
 			{
 				system("CLS");
-				printf("Error: \n", exceptionMessage.c_str());
+				printf("Error: %s\n", exceptionMessage);
 				printf("\n");
 				printf("Press any key to continue.\n");
 				getch();

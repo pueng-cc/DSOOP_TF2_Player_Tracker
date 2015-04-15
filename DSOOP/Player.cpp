@@ -55,7 +55,7 @@ bool Player::ValidatePlayerClass(std::string input)
 		}
 	}
 
-	return false;
+	return isValid;
 }
 
 ///
@@ -204,6 +204,8 @@ std::string Player::tolowerString(std::string input)
 {
 	size_t iterCounter = 0;
 	std::string lowerCaseInput = "";
+	
+	lowerCaseInput.resize(input.length());
 
 	while (iterCounter < input.length())
 	{

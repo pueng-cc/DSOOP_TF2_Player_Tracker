@@ -6,7 +6,7 @@
 #include <time.h>
 using namespace std;
 
-static class RandomPlayerGenerator
+class RandomPlayerGenerator
 {
 private:
 	static std::string RandomString(int length);
