@@ -488,7 +488,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 	bool returnValue = true;
 	string playerClass = playerToValidate.GetPlayerClass;
 
-	if (playerToValidate.MustBeDemoman() == false)
+	if (playerToValidate.MustBeDemoman() == true)
 	{
 		returnValue = false;
 		throw ("If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman.");
