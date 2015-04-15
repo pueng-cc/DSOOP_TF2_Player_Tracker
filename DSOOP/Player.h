@@ -55,9 +55,11 @@ public:
 	bool ValidateSoldier(); // Soldier’s secondary weapon must contain “shotgun” (non-case sensitive)
 	bool ValidatePyro(); // At least one of Pyro’s weapon must contain “rainbow” (non-case sensitive)
 	bool MustBeDemoman(); // If player’s name includes “Smith”, “Brown”, “Wilson”, “Robertson”, or “Thomson”, the only valid class is Demoman (case sensitive)
+	bool IsADemoman(); // Used in combination with MustBeDemoman().
 	bool ValidateHeavy(); // Heavy’s melee weapon can only be [blank], “fist”, “fists”, or “sandvich” (non-case sensitive). None of its fields can contain "smart" (non-case sensitive)
 	bool ValidateEngineer(); // One of Engineer’s weapon must contain “Stool”, “Chair”, or "Sittable" (case sensitive)
 	bool ValidateMedic(); // The word “heal” must appear at least three times across the three weapons of a Medic (non-case sensitive)
 	bool ValidateSniper(); // Sniper has to have at least 5 hats to be valid
 	bool ValidateSpy(); // All of Spy’s weapons must include the any of the following words: “Sneaky”, “Silent”, “Discreet” (case insensitive)
+
 };

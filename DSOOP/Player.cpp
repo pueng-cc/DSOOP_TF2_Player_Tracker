@@ -324,15 +324,19 @@ bool Player::MustBeDemoman()
 		isDemoman = true;
 	}
 
-	if (isDemoman == true)
+	return isDemoman;
+}
+
+bool Player::IsADemoman()
+{
+	bool isIndeedADemoman = false;
+	
+	if (playerClass.compare("Demoman") == 0)
 	{
-		if (playerClass.compare("Demoman") != 0)
-		{
-			isDemoman = false;
-		}
+		isIndeedADemoman = true;
 	}
 
-	return isDemoman;
+	return isIndeedADemoman;
 }
 
 ///
