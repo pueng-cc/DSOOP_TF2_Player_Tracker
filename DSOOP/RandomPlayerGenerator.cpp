@@ -103,27 +103,105 @@ std::string RandomPlayerGenerator::RandomPlayerClass()
 
 std::string RandomPlayerGenerator::RandomPrimaryWeapon(string playerClass)
 {
-	return std::string();
+	std::string newRandomPrimary = "";
+
+	srand(time(NULL));
+	newRandomPrimary = RandomString(12);
+
+	if (playerClass.compare("Scout") == 0)
+	{
+		newRandomPrimary.append(" Shotgun");
+	}
+	else if (playerClass.compare("Spy") == 0)
+	{
+		newRandomPrimary.insert(0, "Sneaky ");
+	}
+	return newRandomPrimary;
 }
 
 std::string RandomPlayerGenerator::RandomSecondaryWeapon(string playerClass)
 {
-	return std::string();
+	std::string newRandomSecondary = "";
+
+	srand(time(NULL));
+	newRandomSecondary = RandomString(12);
+
+	if (playerClass.compare("Soldier") == 0)
+	{
+		newRandomSecondary.append(" Shotgun");
+	}
+	else if (playerClass.compare("Spy") == 0)
+	{
+		newRandomSecondary.insert(0, "Silent ");
+	}
+	return newRandomSecondary;
 }
 
 std::string RandomPlayerGenerator::RandomMeleeWeapon(string playerClass)
 {
-	return std::string();
+	std::string newRandomMelee = "";
+	int randomNumber = 0;
+
+	if (playerClass.compare("Engineer") == 0)
+	{
+		srand(time(NULL));
+		randomNumber = rand() % 2;
+		if (randomNumber == 0)
+		{
+			newRandomMelee = ("Chair");
+		}
+		else
+		{
+			newRandomMelee = ("Stool");
+		}
+	}
+	else if (playerClass.compare("Heavy") == 0)
+	{
+		srand(time(NULL));
+		randomNumber = rand() % 3;
+		if (randomNumber == 0)
+		{
+			newRandomMelee = ("Fist");
+		}
+		else if (randomNumber == 1)
+		{
+			newRandomMelee = ("Fists");
+		}
+		else
+		{
+			newRandomMelee = ("Sandvich");
+		}
+	}
+	else
+	{
+		if (playerClass.compare("Pyro") == 0)
+		{
+			newRandomMelee.append("Rainbow ");
+		}
+		else if (playerClass.compare("Medic") == 0)
+		{
+			newRandomMelee.append("Heal Heal Heal ");
+		}
+		else if (playerClass.compare("Spy") == 0)
+		{
+			newRandomMelee.append("Discreet ");
+		}
+		newRandomMelee.append(RandomString(12));
+	}
+	return newRandomMelee;
 }
 
-std::string RandomPlayerGenerator::RandomNumberOfHats(string playerClass)
+int RandomPlayerGenerator::RandomNumberOfHats(string playerClass)
 {
-	return std::string();
-}
+	int newRandomNumberOfHats = 0;
 
-Player RandomPlayerGenerator::RandomPlayer()
-{
-	Player newRandomPlayer;
+	srand(time(NULL));
+	newRandomNumberOfHats = rand() % 10000;
 
-	return newRandomPlayer;
+	if (playerClass.compare("Sniper") == 0)
+	{
+		newRandomNumberOfHats = newRandomNumberOfHats + 5;
+	}
+	
+	return newRandomNumberOfHats;
 }

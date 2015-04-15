@@ -4,20 +4,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "Player.h"
+using namespace std;
 
 static class RandomPlayerGenerator
 {
 private:
-	std::string RandomString(int length);
+	static std::string RandomString(int length);
 public:
-	std::string RandomName(string playerClass);
-	std::string RandomPlayerClass();
-	std::string RandomPrimaryWeapon(string playerClass);
-	std::string RandomSecondaryWeapon(string playerClass);
-	std::string RandomMeleeWeapon(string playerClass);
-	std::string RandomNumberOfHats(string playerClass);
-
-	Player RandomPlayer();
-
+	static std::string RandomName(std::string playerClass);
+	static std::string RandomPlayerClass();
+	static std::string RandomPrimaryWeapon(std::string playerClass);
+	static std::string RandomSecondaryWeapon(std::string playerClass);
+	static std::string RandomMeleeWeapon(std::string playerClass);
+	static int RandomNumberOfHats(std::string playerClass);
 };

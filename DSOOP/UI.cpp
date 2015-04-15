@@ -236,16 +236,106 @@ void UI::SearchPlayerUI()
 {
 }
 
+void UI::DisplayOnePlayerUI(std::string playerInfo)
+{
+	//string will be returned in "[name]\n[playerClass]\n[primaryWeapon]\n[secondaryWeapon]\n[meleeWeapon]\n[numberOfHats]" format.
+	std::string bufferForParsing = playerInfo;
+	std::string tempName = "";
+	std::string tempPlayerClass = "";
+	std::string tempPrimaryWeapon = "";
+	std::string tempSecondaryWeapon = "";
+	std::string tempMeleeWeapon = "";
+	std::string tempNumberOfHats = ""; //going to display it anyway. no need to convert to int.
+	size_t nextLineLocation = 0;
+
+	nextLineLocation = bufferForParsing.find("\n");
+	tempName = bufferForParsing.substr(nextLineLocation - 1);
+	bufferForParsing.erase(nextLineLocation);
+
+	nextLineLocation = bufferForParsing.find("\n");
+	tempPlayerClass = bufferForParsing.substr(nextLineLocation - 1);
+	bufferForParsing.erase(nextLineLocation);
+
+	nextLineLocation = bufferForParsing.find("\n");
+	tempPrimaryWeapon = bufferForParsing.substr(nextLineLocation - 1);
+	bufferForParsing.erase(nextLineLocation);
+
+	nextLineLocation = bufferForParsing.find("\n");
+	tempSecondaryWeapon = bufferForParsing.substr(nextLineLocation - 1);
+	bufferForParsing.erase(nextLineLocation);
+
+	nextLineLocation = bufferForParsing.find("\n");
+	tempMeleeWeapon = bufferForParsing.substr(nextLineLocation - 1);
+	bufferForParsing.erase(nextLineLocation);
+
+	tempNumberOfHats = bufferForParsing;
+
+	printf("Name: %s\n", tempName.c_str());
+	printf("Class: %s\n", tempPlayerClass.c_str());
+	printf("Primary Weapon: %s\n", tempPrimaryWeapon.c_str());
+	printf("Secondary Weapon: %s\n", tempSecondaryWeapon.c_str());
+	printf("Melee Weapon: %s\n", tempMeleeWeapon.c_str());
+	printf("Number of Hats: %d\n", tempNumberOfHats);
+}
+
 void UI::DisplayDatabaseUI()
 {
 }
 
 void UI::DeleteDatabaseUI()
 {
+	theContainer->DeleteContainer();
+	system("CLS");
+	printf("Database has been deleted.\n");
+	printf("\n");
+	printf("Press any key to continue.\n");
+	getch();
 }
 
 void UI::GenerateRandomPlayersUI()
 {
+	std::string tempName = "";
+	std::string tempPlayerClass = "";
+	std::string tempPrimaryWeapon = "";
+	std::string tempSecondaryWeapon = "";
+	std::string tempMeleeWeapon = "";
+	int tempNumberOfHats = 0;
+	std::string stringBuffer = "";
+	int numberOfRandomPlayers = 0;
+	int randomPlayerCounter = 0;
+	int successCounter = 0;
+	int errorCounter = 0;
+	bool generateSuccessful = true;
+
+	system("CLS");
+	printf("Enter Number of Random Players to Generate: ");
+	getline(cin, stringBuffer);
+	numberOfRandomPlayers = atoi(stringBuffer.c_str());
+	while (randomPlayerCounter <= numberOfRandomPlayers)
+	{
+		tempPlayerClass = RandomPlayerGenerator::RandomPlayerClass();
+		tempName = RandomPlayerGenerator::RandomName(tempPlayerClass);
+		tempPrimaryWeapon = RandomPlayerGenerator::RandomPrimaryWeapon(tempPlayerClass);
+		tempSecondaryWeapon = RandomPlayerGenerator::RandomSecondaryWeapon(tempPlayerClass);
+		tempMeleeWeapon = RandomPlayerGenerator::RandomMeleeWeapon(tempPlayerClass);
+		tempNumberOfHats = RandomPlayerGenerator::RandomNumberOfHats(tempPlayerClass);
+		generateSuccessful = theContainer->CreateNewPlayer(tempName, tempPlayerClass, tempPrimaryWeapon, tempSecondaryWeapon, tempMeleeWeapon, tempNumberOfHats);
+
+		if (generateSuccessful == true)
+		{
+			successCounter++;
+		}
+		else
+		{
+			errorCounter++;
+		}
+	}
+	system("CLS");
+	printf("Random Player Generation Successful: %d\n", successCounter);
+	printf("Random Player Generation Failed: %d\n", errorCounter);
+	printf("\n");
+	printf("Press any key to continue.\n");
+	getch();
 }
 
 void UI::UIDriver()

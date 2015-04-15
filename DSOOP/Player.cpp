@@ -148,10 +148,10 @@ bool Player::ValidateNumberOfHats(int input)
 ///
 /// \return <b>bool</b> - Whether the string is valid.
 ///
-bool Player::ValidateString(std::string input, int maxLength)
+bool Player::ValidateString(std::string input, size_t maxLength)
 {
 	bool isValid = true;
-	int iterCounter = 0;
+	size_t iterCounter = 0;
 
 	if (input.length() > maxLength)
 	{
@@ -177,7 +177,7 @@ bool Player::ValidateString(std::string input, int maxLength)
 /// \brief Validates weapon
 /// \details <b>Details</b>
 ///
-/// General-purpose validator for all weapons. 64 characters max length.
+/// General-purpose validator for all weapons. 32 characters max length.
 ///
 /// \param input - <b>std::string</b> - The string to be validated.
 ///
@@ -187,7 +187,7 @@ bool Player::ValidateString(std::string input, int maxLength)
 ///
 bool Player::ValidateWeapon(std::string input)
 {
-	return ValidateString(input, 64);
+	return ValidateString(input, 32);
 }
 
 ///
@@ -202,7 +202,7 @@ bool Player::ValidateWeapon(std::string input)
 ///
 std::string Player::tolowerString(std::string input)
 {
-	int iterCounter = 0;
+	size_t iterCounter = 0;
 	std::string lowerCaseInput = "";
 
 	while (iterCounter < input.length())
