@@ -1,6 +1,5 @@
 
 
-
 #pragma once
 
 #include <vector>
@@ -11,11 +10,24 @@
 
 using namespace std;
 
+
+///
+/// \brief Default Constructor for the Container class
+/// \details <b>Details</b>
+///
+/// This is the default constructor methode used by the 
+/// Container objects on instantiation.
+/// It currently does no special instantiation of any kind.
+///
+/// \param input - This methode takes no inputs.
+///
+/// \return - This methode returns nothing.
+///
 class Container
 {
 private:
-	vector <Player> containerVector;
-	vector <Player>::iterator myVectorIter;
+	std::vector <Player> containerVector;
+	std::vector <Player>::iterator myVectorIter;
 
 public:
 
@@ -28,15 +40,15 @@ public:
 
 	//Mutators
 	bool AddToContainer(Player newPlayer);			//Will add a player class to the Container.
-	bool CreateNewPlayer(string playerName, string playerClass, string weaponPrimary, string weaponSecondary, string weaponMelee, int numberOfHats = 0);	//Takes new input from view class and stores in container.
-	bool DeleteFromContainer(string playerName);	//Will delete a player class from the Container.
+	bool CreateNewPlayer(std::string playerName, std::string playerClass, std::string weaponPrimary, std::string weaponSecondary, std::string weaponMelee, int numberOfHats = 0);	//Takes new input from view class and stores in container.
+	bool DeleteFromContainer(std::string playerName);	//Will delete a player class from the Container.
 	void DeleteContainer(void);						//Deletes the entire Container.
 
 	//Accesors
-	Player* GetByName(string searchName);	//Searches for a specific player by name.
-	string GetPlayerInfo(string searchName);	//Returns the players info in a single string.
-	string SearchByClass(string searchClass);	//Searches for players by class.
-	string SearchByHats(int numOfHats);			//Searches for players by number of hats.
+	Player* GetByName(std::string searchName);	//Searches for a specific player by name.
+	std::string GetPlayerInfo(std::string searchName);	//Returns the players info in a single string.
+	std::string SearchByClass(std::string searchClass);	//Searches for players by class.
+	std::string SearchByHats(int numOfHats);			//Searches for players by number of hats.
 
 	//Methods.
 	bool RetreiveFromFile(void);	//Retreives container information from a file.
@@ -45,8 +57,8 @@ public:
 	
 	bool CrossFieldValidation(Player playerToValidate);		//Goes through each of he possible cross field validations for the player object.
 	
-
-	void DisplayContainer(void);	//Will display the entire list.	//Depends how we do view layer.
+	std::string Container::ReturnContainer(void);
+	void DisplayContainer(void);	//Will display the entire list.	//Unused function.
 };
 
 
