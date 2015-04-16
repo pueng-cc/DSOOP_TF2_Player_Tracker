@@ -1,3 +1,12 @@
+// File name:			Player.cpp
+// Project:				DSOOP_TF2_Player_Tracker
+// Created by:			Ping Chang Ueng
+//						Lauchlin Morrison
+// Date created:		April 5, 2015
+// Description:			Includes the Player class, which includes accessors, mutators, validations, 
+//						constructor, destructor, and crossfield validations that are used by the 
+//						Container class.
+
 #include "Player.h"
 
 ///

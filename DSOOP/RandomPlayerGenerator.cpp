@@ -1,3 +1,13 @@
+// File name:			RandomPlayerGenerator.cpp
+// Project:				DSOOP_TF2_Player_Tracker
+// Created by:			Ping Chang Ueng
+//						Lauchlin Morrison
+// Date created:		April 12, 2015
+// Description:			This one actually doesn't create a whole player, since UI won't be able 
+//						to understand it if that's the case. The UI class within this file is 
+//						capable to generate random name, random weapon name, random class, and 
+//						random number for hats.
+
 #include "RandomPlayerGenerator.h"
 
 ///

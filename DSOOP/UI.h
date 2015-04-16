@@ -1,3 +1,9 @@
+// File name:			UI.h
+// Project:				DSOOP_TF2_Player_Tracker
+// Created by:			Ping Chang Ueng
+//						Lauchlin Morrison
+// Date created:		April 5, 2015
+// Description:			Header file for the UI class.
 #pragma warning(disable: 4996)
 
 #include <string>

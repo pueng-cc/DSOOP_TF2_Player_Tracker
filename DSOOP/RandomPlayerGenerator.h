@@ -1,3 +1,10 @@
+// File name:			RandomPlayerGenerator.h
+// Project:				DSOOP_TF2_Player_Tracker
+// Created by:			Ping Chang Ueng
+//						Lauchlin Morrison
+// Date created:		April 12, 2015
+// Description:			Header file of RandomPlayerGenerator class.
+
 #pragma once
 #include <string>
 #include <iostream>

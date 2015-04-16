@@ -18,7 +18,7 @@ int main()
 	playerObject.SetPlayerClass("Doctor");
 	playerObject.SetNumberOfHats(555);
 
-	// Normal Test
+	// Normal Test 1
 	// Input:			HEAL HEAL HEAL Gun
 	//					Deadly Pistol
 	//					Chainsaw
@@ -26,6 +26,7 @@ int main()
 	playerObject.SetPrimaryWeapon("HEAL HEAL HEAL Gun");
 	playerObject.SetSecondaryWeapon("Deadly Pistol");
 	playerObject.SetMeleeWeapon("Chainsaw");
+	printf("Normal Test 1: ");
 	if (playerObject.ValidateMedic() == true)
 	{
 		printf("Valid\n");
@@ -35,7 +36,7 @@ int main()
 		printf("Invalid\n");
 	}
 
-	// Normal Test
+	// Normal Test 2
 	// Input:			Heal Heal Gun
 	//					Deadly Pistol
 	//					Heal Chainsaw
@@ -43,6 +44,7 @@ int main()
 	playerObject.SetPrimaryWeapon("Heal Heal Gun");
 	playerObject.SetSecondaryWeapon("Deadly Pistol");
 	playerObject.SetMeleeWeapon("Heal Chainsaw");
+	printf("Normal Test 2: ");
 	if (playerObject.ValidateMedic() == true)
 	{
 		printf("Valid\n");
@@ -52,7 +54,7 @@ int main()
 		printf("Invalid\n");
 	}
 
-	// Normal Test
+	// Normal Test 3
 	// Input:			Heal Gun
 	//					Deadly heal Pistol
 	//					Heal Chainsaw
@@ -60,6 +62,7 @@ int main()
 	playerObject.SetPrimaryWeapon("Heal Gun");
 	playerObject.SetSecondaryWeapon("Deadly Heal Pistol");
 	playerObject.SetMeleeWeapon("Heal Chainsaw");
+	printf("Normal Test 3: ");
 	if (playerObject.ValidateMedic() == true)
 	{
 		printf("Valid\n");
@@ -69,7 +72,7 @@ int main()
 		printf("Invalid\n");
 	}
 
-	// Exception Test
+	// Exception Test 3
 	// Input:			Gun of Death
 	//					Deadly Pistol
 	//					Chainsaw
@@ -77,6 +80,7 @@ int main()
 	playerObject.SetPrimaryWeapon("Gun of Death");
 	playerObject.SetSecondaryWeapon("Deadly Pistol");
 	playerObject.SetMeleeWeapon("Chainsaw");
+	printf("Exception Test 1: ");
 	if (playerObject.ValidateMedic() == true)
 	{
 		printf("Valid\n");
@@ -86,7 +90,7 @@ int main()
 		printf("Invalid\n");
 	}
 
-	// Exception Test
+	// Exception Test 2
 	// Input:			Heal Heal Gun
 	//					Deadly Pistol
 	//					Chainsaw
@@ -94,6 +98,7 @@ int main()
 	playerObject.SetPrimaryWeapon("Heal Heal Gun");
 	playerObject.SetSecondaryWeapon("Deadly Pistol");
 	playerObject.SetMeleeWeapon("Chainsaw");
+	printf("Exception Test 2: ");
 	if (playerObject.ValidateMedic() == true)
 	{
 		printf("Valid\n");
@@ -103,7 +108,7 @@ int main()
 		printf("Invalid\n");
 	}
 
-	// Exception Test
+	// Exception Test 3
 	// Input:			HEEEEEEEEEEAL
 	//					HEALLLLLLLLLLLLLLL
 	//					HEEEEEEEEEEEAAAAALLLLLLLLL
@@ -111,6 +116,7 @@ int main()
 	playerObject.SetPrimaryWeapon("HEEEEEEEEEEAL");
 	playerObject.SetSecondaryWeapon("HEALLLLLLLLLLLLLLL");
 	playerObject.SetMeleeWeapon("HEEEEEEEEEEEAAAAALLLLLLLLL");
+	printf("Exception Test 3: ");
 	if (playerObject.ValidateMedic() == true)
 	{
 		printf("Valid\n");

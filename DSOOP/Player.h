@@ -1,3 +1,10 @@
+// File name:			Player.h
+// Project:				DSOOP_TF2_Player_Tracker
+// Created by:			Ping Chang Ueng
+//						Lauchlin Morrison
+// Date created:		April 5, 2015
+// Description:			Header file of the Player class.
+
 #include <string>
 #include <iostream>
 using namespace std;

@@ -1,3 +1,10 @@
+// File name:			UI.cpp
+// Project:				DSOOP_TF2_Player_Tracker
+// Created by:			Ping Chang Ueng
+//						Lauchlin Morrison
+// Date created:		April 5, 2015
+// Description:			Contains all UI elements, including menu, prompting user input, and 
+//						display existing data.
 #include "UI.h"
 
 ///
@@ -116,12 +123,12 @@ void UI::AddPlayerUI()
 		printf("\n");
 		printf("Current Player Info: \n");
 		printf("\n");
-		printf("Name: %s\n", newName.c_str());
-		printf("Class: %s\n", newPlayerClass.c_str());
-		printf("Primary Weapon: %s\n", newPrimaryWeapon.c_str());
+		printf("Name:             %s\n", newName.c_str());
+		printf("Class:            %s\n", newPlayerClass.c_str());
+		printf("Primary Weapon:   %s\n", newPrimaryWeapon.c_str());
 		printf("Secondary Weapon: %s\n", newSecondaryWeapon.c_str());
-		printf("Melee Weapon: %s\n", newMeleeWeapon.c_str());
-		printf("Number of Hats: %d\n", newNumberOfHats);
+		printf("Melee Weapon:     %s\n", newMeleeWeapon.c_str());
+		printf("Number of Hats:   %d\n", newNumberOfHats);
 		printf("\n");
 		printf("User number key to select menu item.\n");
 
@@ -376,12 +383,12 @@ void UI::DisplayOnePlayerUI(std::string playerInfo)
 
 	tempNumberOfHats = bufferForParsing;
 
-	printf("Name: %s\n", tempName.c_str());
-	printf("Class: %s\n", tempPlayerClass.c_str());
-	printf("Primary Weapon: %s\n", tempPrimaryWeapon.c_str());
+	printf("Name:             %s\n", tempName.c_str());
+	printf("Class:            %s\n", tempPlayerClass.c_str());
+	printf("Primary Weapon:   %s\n", tempPrimaryWeapon.c_str());
 	printf("Secondary Weapon: %s\n", tempSecondaryWeapon.c_str());
-	printf("Melee Weapon: %s\n", tempMeleeWeapon.c_str());
-	printf("Number of Hats: %d\n", tempNumberOfHats);
+	printf("Melee Weapon:     %s\n", tempMeleeWeapon.c_str());
+	printf("Number of Hats:   %d\n", tempNumberOfHats);
 }
 
 ///
@@ -579,7 +586,8 @@ void UI::SearchByNumberOfHatsUI()
 
 void UI::DisplayDatabaseUI()
 {
-	theContainer->DisplayContainer();	//Cheaty display methode. This is subject to change.
+	DisplayManyPlayersUI(theContainer->ReturnContainer());
+	printf("All players in database have been displayed.\n");
 	getch();
 }
 
