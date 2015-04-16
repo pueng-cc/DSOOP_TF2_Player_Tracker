@@ -3,12 +3,13 @@
 
 
 ///
+/// \class 
+/// 
 /// \brief Default Constructor for the Container class
 /// \details <b>Details</b>
 ///
-/// This is the default constructor methode used by the 
-/// Container objects on instantiation.
-/// It currently does no special instantiation of any kind.
+/// This class is a database that holds Player objects. It stores each Player in a vector.
+/// The Player's are stored in order alphabeticaly. (Using ASCII)
 ///
 /// \param input - This methode takes no inputs.
 ///
@@ -106,7 +107,7 @@ bool Container::AddToContainer(Player newPlayer)
 ///
 /// \return - <b>bool</b> - true if the object was added to the Container. false if it was not.
 ///
-bool Container::CreateNewPlayer(string playerName, string playerClass, string weaponPrimary, string weaponSecondary, string weaponMelee, int numberOfHats)
+bool Container::CreateNewPlayer(std::string playerName, std::string playerClass, std::string weaponPrimary, std::string weaponSecondary, std::string weaponMelee, int numberOfHats)
 {
 	Player tempPlayer;
 	bool returnValue = true;
@@ -174,7 +175,7 @@ bool Container::CreateNewPlayer(string playerName, string playerClass, string we
 ///
 /// \return - This methode retuns nothing.
 ///
-bool Container::DeleteFromContainer(string playerName)
+bool Container::DeleteFromContainer(std::string playerName)
 {
 	bool returnValue = false;
 	if (GetByName(playerName) != NULL)
@@ -216,7 +217,7 @@ void Container::DeleteContainer(void)
 ///
 /// \return <b>Player*</b> - Will return a pointer to the object if it exists. Otherwise will return NULL.
 ///
-Player* Container::GetByName(string searchName)
+Player* Container::GetByName(std::string searchName)
 {
 	Player* searchResult = NULL;
 	bool foundItem = false;
@@ -254,9 +255,9 @@ Player* Container::GetByName(string searchName)
 ///
 /// \return <b>string</b> - Will return a string containing the name of each player by that class.
 /// \see GetByName()
-string Container::GetPlayerInfo(string searchClass)
+std::string Container::GetPlayerInfo(std::string searchClass)
 {
-	string returnString;
+	std::string returnString;
 	Player* tempPlayer = GetByName(searchClass);
 	int tempInt = 0;
 
@@ -295,9 +296,9 @@ string Container::GetPlayerInfo(string searchClass)
 ///
 /// \return <b>string</b> - Will return a string containing the name of each player by that class.
 ///
-string Container::SearchByClass(string searchClass)
+std::string Container::SearchByClass(std::string searchClass)
 {
-	string returnString;
+	std::string returnString;
 	bool firstMember = true;
 
 	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
@@ -333,9 +334,9 @@ string Container::SearchByClass(string searchClass)
 ///
 /// \return <b>string</b> - Returns a string containing the name of each player with n number of hats.
 ///
-string Container::SearchByHats(int numOfHats)
+std::string Container::SearchByHats(int numOfHats)
 {
-	string returnString;
+	std::string returnString;
 	bool firstMember = true;
 
 	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
@@ -375,7 +376,7 @@ string Container::SearchByHats(int numOfHats)
 ///
 bool Container::StoreInFile(void)
 {
-	fstream dataFile;
+	std::fstream dataFile;
 
 	bool returnValue = false;
 	bool errorStatus = false;
@@ -389,8 +390,8 @@ bool Container::StoreInFile(void)
 		dataFile.open("LauchlinMor.txt", ios::out | ios::binary);
 		if (dataFile.fail())
 		{
-			cout << "File does not exist!" << endl;
 			errorStatus = true;
+			throw ("File does not exist!");
 		}
 	}
 
@@ -426,9 +427,9 @@ bool Container::StoreInFile(void)
 ///
 bool Container::RetreiveFromFile(void)
 {
-	fstream dataFile;
+	std::fstream dataFile;
 	Player tempPlayer;
-	string attribute;
+	std::string attribute;
 	int tempNum = 0;
 
 
@@ -443,8 +444,8 @@ bool Container::RetreiveFromFile(void)
 		dataFile.open("LauchlinMor.txt", ios::out | ios::binary);
 		if (dataFile.fail())
 		{
-			cout << "File does not exist!" << endl;
 			errorStatus = true;
+			throw ("File does not exist!");
 		}
 	}
 
@@ -492,7 +493,7 @@ bool Container::RetreiveFromFile(void)
 bool Container::CrossFieldValidation(Player playerToValidate)
 {
 	bool returnValue = true;
-	string playerClass = playerToValidate.GetPlayerClass();
+	std::string playerClass = playerToValidate.GetPlayerClass();
 
 	if (playerToValidate.MustBeDemoman() == true)
 	{
@@ -504,7 +505,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 	}
 	else
 	{
-		if (playerClass.compare("Scout") == 0)	//Validate if the player is a scout.
+		if (playerClass.compare("Scout") == 0)			//Validate if the player is a scout.
 		{
 			if (playerToValidate.ValidateScout() == false)
 			{
@@ -520,7 +521,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 				throw ("Soldier's secondary weapon must contain \"shotgun\".");
 			}
 		}
-		else if (playerClass.compare("Pyro") == 0)	//Validate if the player is a pyro.
+		else if (playerClass.compare("Pyro") == 0)		//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidatePyro() == false)
 			{
@@ -528,7 +529,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 				throw ("At least one of Pyro's weapon must contain \"rainbow\".");
 			}
 		}
-		else if (playerClass.compare("Heavy") == 0)	//Validate if the player is a pyro.
+		else if (playerClass.compare("Heavy") == 0)		//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateHeavy() == false)
 			{
@@ -544,7 +545,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 				throw ("One of Engineer’s weapon must contain \"Stool\", \"Chair\", or \"Sittable\"(case sensitive)");
 			}
 		}
-		else if (playerClass.compare("Medic") == 0)	//Validate if the player is a pyro.
+		else if (playerClass.compare("Medic") == 0)		//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateMedic() == false)
 			{
@@ -560,7 +561,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 				throw ("Sniper has to have at least 5 hats to be valid.");
 			}
 		}
-		else if (playerClass.compare("Spy") == 0)	//Validate if the player is a pyro.
+		else if (playerClass.compare("Spy") == 0)		//Validate if the player is a pyro.
 		{
 			if (playerToValidate.ValidateSniper() == false)
 			{
@@ -574,7 +575,18 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 	return returnValue;
 }
 
-//Temporary function. Sould probably be moved/integrated in the UI portion of the code.
+
+///
+/// \brief Displays all the container entries
+/// \details <b>Details</b>
+///
+/// This methode will display all container entires in a formated fashion.
+/// Normaly this would be done entirly through the View Layer.
+///
+/// \param input - This methode takes no parameters.
+///
+/// \return - This methode returns nothing.
+///
 void Container::DisplayContainer(void)
 {
 	int count = 0;
@@ -582,14 +594,48 @@ void Container::DisplayContainer(void)
 	while (myVectorIter != containerVector.end())	//Go until the end of list.
 	{
 
-		cout << myVectorIter->GetName() << endl;
-		cout << myVectorIter->GetPlayerClass() << endl;
-		cout << myVectorIter->GetPrimaryWeapon() << endl;
-		cout << myVectorIter ->GetSecondaryWeapon() << endl;
-		cout << myVectorIter ->GetMeleeWeapon() << endl;
-		cout << myVectorIter ->GetNumberOfHats() << endl << endl;
+		std::cout << "Name             : " << myVectorIter->GetName() << endl;
+		std::cout << "Class            : " << myVectorIter->GetPlayerClass() << endl;
+		std::cout << "Primary Weapon   : " << myVectorIter->GetPrimaryWeapon() << endl;
+		std::cout << "Secondary Weapon : " << myVectorIter->GetSecondaryWeapon() << endl;
+		std::cout << "Melee Weapon     : " << myVectorIter->GetMeleeWeapon() << endl;
+		std::cout << "Number of Hats   : " << myVectorIter->GetNumberOfHats() << endl << endl;
 
 		count++;
 		myVectorIter++;
 	}
+}
+
+
+///
+/// \brief Returns the entire container
+/// \details <b>Details</b>
+///
+/// This methode will return all the names that are in the container.
+/// It appends each name to a string that is then returned. Each name is seperated by a "\n".
+///
+/// \param input - This methode takes no parameters.
+///
+/// \return - <b>string<b> - This methode a string of all the names in the database.
+///
+std::string Container::ReturnContainer(void)
+{
+	std::string returnString;
+	bool firstMember = true;
+
+	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
+	while (myVectorIter != containerVector.end())	//Go until the end of list.
+	{
+		if (firstMember == true)
+		{
+			firstMember = false;
+		}
+		else
+		{
+			returnString.append("\n");
+		}
+		returnString.append(myVectorIter->GetName());
+	}
+
+	return returnString;
 }
