@@ -1,0 +1,159 @@
+\hypertarget{class_random_player_generator}{}\section{Random\+Player\+Generator Class Reference}
+\label{class_random_player_generator}\index{Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \hyperlink{class_random_player_generator_a77f060ac6cb51407e932c2a3f4fd31b2}{Random\+Name} (std\+::string player\+Class)
+\begin{DoxyCompactList}\small\item\em Creates random name. \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{class_random_player_generator_a6ef76bd38b842493a68587af8ac5e2ca}{Random\+Player\+Class} ()
+\begin{DoxyCompactList}\small\item\em Creates random class. \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{class_random_player_generator_a5eaeae37f585247907a1a488112023ff}{Random\+Primary\+Weapon} (std\+::string player\+Class)
+\begin{DoxyCompactList}\small\item\em Creates random primary weapon. \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{class_random_player_generator_aa87813d47db6d9f7aade0d20646bebe4}{Random\+Secondary\+Weapon} (std\+::string player\+Class)
+\begin{DoxyCompactList}\small\item\em Creates random secondary weapon. \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{class_random_player_generator_a07240f9eab0983fd9ced58ba19d4af39}{Random\+Melee\+Weapon} (std\+::string player\+Class)
+\begin{DoxyCompactList}\small\item\em Creates random melee weapon. \end{DoxyCompactList}\item 
+static int \hyperlink{class_random_player_generator_ae5c2055098cfb2b74374bd180b60d003}{Random\+Number\+Of\+Hats} (std\+::string player\+Class)
+\begin{DoxyCompactList}\small\item\em Creates random number of hats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_random_player_generator_a07240f9eab0983fd9ced58ba19d4af39}{}\index{Random\+Player\+Generator@{Random\+Player\+Generator}!Random\+Melee\+Weapon@{Random\+Melee\+Weapon}}
+\index{Random\+Melee\+Weapon@{Random\+Melee\+Weapon}!Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsubsection[{Random\+Melee\+Weapon}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Random\+Player\+Generator\+::\+Random\+Melee\+Weapon (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Class}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_random_player_generator_a07240f9eab0983fd9ced58ba19d4af39}
+
+
+Creates random melee weapon. 
+
+{\bfseries Details}
+
+Calls Random\+String() to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Class} & -\/ {\bfseries std\+::string} -\/ The length of the string to create.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries std\+::string} -\/ The randomly generated melee weapon. 
+\end{DoxyReturn}
+\hypertarget{class_random_player_generator_a77f060ac6cb51407e932c2a3f4fd31b2}{}\index{Random\+Player\+Generator@{Random\+Player\+Generator}!Random\+Name@{Random\+Name}}
+\index{Random\+Name@{Random\+Name}!Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsubsection[{Random\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Random\+Player\+Generator\+::\+Random\+Name (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Class}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_random_player_generator_a77f060ac6cb51407e932c2a3f4fd31b2}
+
+
+Creates random name. 
+
+{\bfseries Details}
+
+Uses Random\+String() to make a string with length of 12. Append class-\/specific limitations to the string afterward.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Class} & -\/ {\bfseries std\+::string} -\/ The class of the player the name is for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries std\+::string} -\/ The randomly generated name. 
+\end{DoxyReturn}
+\hypertarget{class_random_player_generator_ae5c2055098cfb2b74374bd180b60d003}{}\index{Random\+Player\+Generator@{Random\+Player\+Generator}!Random\+Number\+Of\+Hats@{Random\+Number\+Of\+Hats}}
+\index{Random\+Number\+Of\+Hats@{Random\+Number\+Of\+Hats}!Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsubsection[{Random\+Number\+Of\+Hats}]{\setlength{\rightskip}{0pt plus 5cm}int Random\+Player\+Generator\+::\+Random\+Number\+Of\+Hats (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Class}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_random_player_generator_ae5c2055098cfb2b74374bd180b60d003}
+
+
+Creates random number of hats. 
+
+{\bfseries Details}
+
+Generates a random number between 0$\sim$9999. Add 5 more hats if player class is Sniper.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Class} & -\/ {\bfseries std\+::string} -\/ The length of the string to create.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries int} -\/ The randomly generated number for hats. 
+\end{DoxyReturn}
+\hypertarget{class_random_player_generator_a6ef76bd38b842493a68587af8ac5e2ca}{}\index{Random\+Player\+Generator@{Random\+Player\+Generator}!Random\+Player\+Class@{Random\+Player\+Class}}
+\index{Random\+Player\+Class@{Random\+Player\+Class}!Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsubsection[{Random\+Player\+Class}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Random\+Player\+Generator\+::\+Random\+Player\+Class (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_random_player_generator_a6ef76bd38b842493a68587af8ac5e2ca}
+
+
+Creates random class. 
+
+{\bfseries Details}
+
+Returns one of the 9 classes at random. This one is expected to be called prior to any other random generators.
+
+\begin{DoxyReturn}{Returns}
+{\bfseries std\+::string} -\/ The randomly generated class. 
+\end{DoxyReturn}
+\hypertarget{class_random_player_generator_a5eaeae37f585247907a1a488112023ff}{}\index{Random\+Player\+Generator@{Random\+Player\+Generator}!Random\+Primary\+Weapon@{Random\+Primary\+Weapon}}
+\index{Random\+Primary\+Weapon@{Random\+Primary\+Weapon}!Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsubsection[{Random\+Primary\+Weapon}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Random\+Player\+Generator\+::\+Random\+Primary\+Weapon (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Class}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_random_player_generator_a5eaeae37f585247907a1a488112023ff}
+
+
+Creates random primary weapon. 
+
+{\bfseries Details}
+
+Calls Random\+String() to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Class} & -\/ {\bfseries std\+::string} -\/ The length of the string to create.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries std\+::string} -\/ The randomly generated primary weapon. 
+\end{DoxyReturn}
+\hypertarget{class_random_player_generator_aa87813d47db6d9f7aade0d20646bebe4}{}\index{Random\+Player\+Generator@{Random\+Player\+Generator}!Random\+Secondary\+Weapon@{Random\+Secondary\+Weapon}}
+\index{Random\+Secondary\+Weapon@{Random\+Secondary\+Weapon}!Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsubsection[{Random\+Secondary\+Weapon}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Random\+Player\+Generator\+::\+Random\+Secondary\+Weapon (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{player\+Class}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_random_player_generator_aa87813d47db6d9f7aade0d20646bebe4}
+
+
+Creates random secondary weapon. 
+
+{\bfseries Details}
+
+Calls Random\+String() to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Class} & -\/ {\bfseries std\+::string} -\/ The length of the string to create.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries std\+::string} -\/ The randomly generated secondary weapon. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+S\+O\+O\+P/Random\+Player\+Generator.\+h\item 
+D\+S\+O\+O\+P/Random\+Player\+Generator.\+cpp\end{DoxyCompactItemize}

@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Container.h" />
+    <ClInclude Include="DSOOP_TF2_Player_Tracker_MainProjectPage.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RandomPlayerGenerator.h" />
     <ClInclude Include="UI.h" />

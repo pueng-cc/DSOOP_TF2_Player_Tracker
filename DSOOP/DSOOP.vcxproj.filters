@@ -27,6 +27,9 @@
     <ClInclude Include="RandomPlayerGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DSOOP_TF2_Player_Tracker_MainProjectPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Container.cpp">
