@@ -1,17 +1,10 @@
 \hypertarget{class_container}{}\section{Container Class Reference}
 \label{class_container}\index{Container@{Container}}
-
-
-Default Constructor for the \hyperlink{class_container}{Container} class.  
-
-
-
-
-{\ttfamily \#include $<$Container.\+h$>$}
-
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{class_container_a5231ead51bcdd1a9b1f497414e76b6f4}{Container} (void)
+\begin{DoxyCompactList}\small\item\em Default Constructor for the \hyperlink{class_container}{Container} class. \end{DoxyCompactList}\item 
 \hyperlink{class_container_ae9f5d07bfc3defda274aa06091c19f56}{$\sim$\+Container} ()
 \begin{DoxyCompactList}\small\item\em Destructor for the \hyperlink{class_container}{Container} class. \end{DoxyCompactList}\item 
 bool \hyperlink{class_container_adcb2699db821af086db2fbce6a9470e1}{Add\+To\+Container} (\hyperlink{class_player}{Player} new\+Player)
@@ -40,14 +33,32 @@ std\+::string \hyperlink{class_container_a5a483ed7cdea2dd32b02cf94fd21822a}{Retu
 \begin{DoxyCompactList}\small\item\em Returns the entire container. \end{DoxyCompactList}\item 
 void \hyperlink{class_container_aa7aba0b9646397931010aee0da898dda}{Display\+Container} (void)
 \begin{DoxyCompactList}\small\item\em Displays all the container entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_container_aae7d950cc0f3f470a43948a452e645ba}{}std\+::vector$<$ \hyperlink{class_player}{Player} $>$ {\bfseries container\+Vector}\label{class_container_aae7d950cc0f3f470a43948a452e645ba}
+
+\item 
+\hypertarget{class_container_a7eda08f8737b818a0c6c9cfb0cd08e40}{}std\+::vector$<$ \hyperlink{class_player}{Player} $>$\+::iterator {\bfseries my\+Vector\+Iter}\label{class_container_a7eda08f8737b818a0c6c9cfb0cd08e40}
+
+\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_container_a5231ead51bcdd1a9b1f497414e76b6f4}{}\index{Container@{Container}!Container@{Container}}
+\index{Container@{Container}!Container@{Container}}
+\subsubsection[{Container}]{\setlength{\rightskip}{0pt plus 5cm}Container\+::\+Container (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_container_a5231ead51bcdd1a9b1f497414e76b6f4}
+
+
 Default Constructor for the \hyperlink{class_container}{Container} class. 
 
 {\bfseries Details}
 
-This is the default constructor methode used by the \hyperlink{class_container}{Container} objects on instantiation. It currently does no special instantiation of any kind.
+This class is a database that holds \hyperlink{class_player}{Player} objects. It stores each \hyperlink{class_player}{Player} in a vector. The \hyperlink{class_player}{Player}\textquotesingle{}s are stored in order alphabeticaly. (Using A\+S\+C\+I\+I)
 
 
 \begin{DoxyParams}{Parameters}
@@ -57,9 +68,6 @@ This is the default constructor methode used by the \hyperlink{class_container}{
 \begin{DoxyReturn}{Returns}
 -\/ This methode returns nothing. 
 \end{DoxyReturn}
-
-
-\subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_container_ae9f5d07bfc3defda274aa06091c19f56}{}\index{Container@{Container}!````~Container@{$\sim$\+Container}}
 \index{````~Container@{$\sim$\+Container}!Container@{Container}}
 \subsubsection[{$\sim$\+Container}]{\setlength{\rightskip}{0pt plus 5cm}Container\+::$\sim$\+Container (

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ui',['UI',['../class_u_i.html#ac9d77b1a557738fcaf0d97fe05881a9f',1,'UI']]],
-  ['uidriver',['UIDriver',['../class_u_i.html#ac4633d40eeaf1c9e492549b5b1220cf8',1,'UI']]]
+  ['tolowerstring',['tolowerString',['../class_player.html#a2a7318787e21ec1e69db473bee23637b',1,'Player']]]
 ];

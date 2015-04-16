@@ -14,5 +14,7 @@ var class_container =
     [ "ReturnContainer", "class_container.html#a5a483ed7cdea2dd32b02cf94fd21822a", null ],
     [ "SearchByClass", "class_container.html#a136a4e9bbd1b018e6572fb5ac4f2e133", null ],
     [ "SearchByHats", "class_container.html#ae84b8946992689f0da2278719cbe9fb1", null ],
-    [ "StoreInFile", "class_container.html#a3fbf493b69d0fdb0428ba9fd4384a1ae", null ]
+    [ "StoreInFile", "class_container.html#a3fbf493b69d0fdb0428ba9fd4384a1ae", null ],
+    [ "containerVector", "class_container.html#aae7d950cc0f3f470a43948a452e645ba", null ],
+    [ "myVectorIter", "class_container.html#a7eda08f8737b818a0c6c9cfb0cd08e40", null ]
 ];

@@ -49,6 +49,48 @@ bool \hyperlink{class_player_ad59223bff91b71bff98ead0a1bd83738}{Validate\+Sniper
 \begin{DoxyCompactList}\small\item\em Validates Sniper class. \end{DoxyCompactList}\item 
 bool \hyperlink{class_player_a92965548db9cd01fb649a8175ab93a03}{Validate\+Spy} ()
 \begin{DoxyCompactList}\small\item\em Validates Spy class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_player_a47b1881f4f85d8c7189820e29b9593aa}{Validate\+Name} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Validates player name. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_player_a539c534db4ddbf1b644ed67f97770926}{Validate\+Player\+Class} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Validates player class. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_player_aff737357ce6ee4b79595a7926332efa9}{Validate\+Primary\+Weapon} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Validates primary weapon. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_player_adef14e77cfa9e23cb8539b80c658a487}{Validate\+Secondary\+Weapon} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Validates secondary weapon. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_player_a9c27dc39e03687c7091824dfb08cbd57}{Validate\+Melee\+Weapon} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Validates melee weapon. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_player_acc7b39eda1852834cefe01cb5acd7108}{Validate\+Number\+Of\+Hats} (int)
+\begin{DoxyCompactList}\small\item\em Validates number of hats. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_player_afc04c20ec1540e20c932038f0854a990}{Validate\+String} (std\+::string, size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Validates a string. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_player_adaf77c65f5dddda81b83757a9edb1901}{Validate\+Weapon} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Validates weapon. \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{class_player_a2a7318787e21ec1e69db473bee23637b}{tolower\+String} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Turns every characers within a string to lowercase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_player_af9c920fabaafdeb7961a645315b521ff}{}std\+::string {\bfseries name}\label{class_player_af9c920fabaafdeb7961a645315b521ff}
+
+\item 
+\hypertarget{class_player_ae0626d499df074851372bbe2ce866473}{}std\+::string {\bfseries player\+Class}\label{class_player_ae0626d499df074851372bbe2ce866473}
+
+\item 
+\hypertarget{class_player_aa1e2ff9229bfe64551b076726c5a26e4}{}std\+::string {\bfseries primary\+Weapon}\label{class_player_aa1e2ff9229bfe64551b076726c5a26e4}
+
+\item 
+\hypertarget{class_player_accd6cd790a5bdd48269e7ecf4278d019}{}std\+::string {\bfseries secondary\+Weapon}\label{class_player_accd6cd790a5bdd48269e7ecf4278d019}
+
+\item 
+\hypertarget{class_player_adf7546769edb9c1e1166d4a63a16cce0}{}std\+::string {\bfseries melee\+Weapon}\label{class_player_adf7546769edb9c1e1166d4a63a16cce0}
+
+\item 
+\hypertarget{class_player_ab77edc66f43d9daac7b1c8f5680af313}{}int {\bfseries number\+Of\+Hats}\label{class_player_ab77edc66f43d9daac7b1c8f5680af313}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -357,6 +399,29 @@ Mutate secondary\+Weapon if the input is valid
 \begin{DoxyReturn}{Returns}
 {\bfseries bool} -\/ whether the mutation was a success 
 \end{DoxyReturn}
+\hypertarget{class_player_a2a7318787e21ec1e69db473bee23637b}{}\index{Player@{Player}!tolower\+String@{tolower\+String}}
+\index{tolower\+String@{tolower\+String}!Player@{Player}}
+\subsubsection[{tolower\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Player\+::tolower\+String (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_a2a7318787e21ec1e69db473bee23637b}
+
+
+Turns every characers within a string to lowercase. 
+
+{\bfseries Details}
+
+Use tolower() on every character within the input string, then return the result.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be tolower()\textquotesingle{}ed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries std\+::string} -\/ The tolower()\textquotesingle{}ed string 
+\end{DoxyReturn}
 \hypertarget{class_player_ae248a4a84b6219400d56d76cf2893ae3}{}\index{Player@{Player}!Validate\+Engineer@{Validate\+Engineer}}
 \index{Validate\+Engineer@{Validate\+Engineer}!Player@{Player}}
 \subsubsection[{Validate\+Engineer}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Engineer (
@@ -411,6 +476,130 @@ A Medic must have at least three \char`\"{}heal\char`\"{} repeated across all it
 \begin{DoxyReturn}{Returns}
 {\bfseries bool} -\/ Whether the player is valid as a Medic. 
 \end{DoxyReturn}
+\hypertarget{class_player_a9c27dc39e03687c7091824dfb08cbd57}{}\index{Player@{Player}!Validate\+Melee\+Weapon@{Validate\+Melee\+Weapon}}
+\index{Validate\+Melee\+Weapon@{Validate\+Melee\+Weapon}!Player@{Player}}
+\subsubsection[{Validate\+Melee\+Weapon}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Melee\+Weapon (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_a9c27dc39e03687c7091824dfb08cbd57}
+
+
+Validates melee weapon. 
+
+{\bfseries Details}
+
+A redundant method that servces no purpose at the moment. This method is made just so it\textquotesingle{}ll be less of a hassle if we decide to add per-\/weapon validations in the future.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the input is valid as a melee weapon.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_player_adaf77c65f5dddda81b83757a9edb1901}{Validate\+Weapon()} 
+\end{DoxySeeAlso}
+\hypertarget{class_player_a47b1881f4f85d8c7189820e29b9593aa}{}\index{Player@{Player}!Validate\+Name@{Validate\+Name}}
+\index{Validate\+Name@{Validate\+Name}!Player@{Player}}
+\subsubsection[{Validate\+Name}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Name (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_a47b1881f4f85d8c7189820e29b9593aa}
+
+
+Validates player name. 
+
+{\bfseries Details}
+
+Passes parameter to \hyperlink{class_player_afc04c20ec1540e20c932038f0854a990}{Validate\+String()}, with 32 characters as maximum length
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the input is valid as a player name.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_player_afc04c20ec1540e20c932038f0854a990}{Validate\+String()} 
+\end{DoxySeeAlso}
+\hypertarget{class_player_acc7b39eda1852834cefe01cb5acd7108}{}\index{Player@{Player}!Validate\+Number\+Of\+Hats@{Validate\+Number\+Of\+Hats}}
+\index{Validate\+Number\+Of\+Hats@{Validate\+Number\+Of\+Hats}!Player@{Player}}
+\subsubsection[{Validate\+Number\+Of\+Hats}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Number\+Of\+Hats (
+\begin{DoxyParamCaption}
+\item[{int}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_acc7b39eda1852834cefe01cb5acd7108}
+
+
+Validates number of hats. 
+
+{\bfseries Details}
+
+Checks whether the input is an appropriate number for the amount of hats worn by a player. Unfortunately wearing fractions of a hat or negative amount of hat is currently not supported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries int} -\/ The int to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the input is valid as a number of hats. 
+\end{DoxyReturn}
+\hypertarget{class_player_a539c534db4ddbf1b644ed67f97770926}{}\index{Player@{Player}!Validate\+Player\+Class@{Validate\+Player\+Class}}
+\index{Validate\+Player\+Class@{Validate\+Player\+Class}!Player@{Player}}
+\subsubsection[{Validate\+Player\+Class}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Player\+Class (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_a539c534db4ddbf1b644ed67f97770926}
+
+
+Validates player class. 
+
+{\bfseries Details}
+
+Unlike other string fields, player class only allows specific input\+: scout, soldier, pyro, demoman, heavy, engineer, medic, sniper, and spy. Non-\/case sensitive, since the string will be converted to lowercase during comparison.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the input is valid as a player class. 
+\end{DoxyReturn}
+\hypertarget{class_player_aff737357ce6ee4b79595a7926332efa9}{}\index{Player@{Player}!Validate\+Primary\+Weapon@{Validate\+Primary\+Weapon}}
+\index{Validate\+Primary\+Weapon@{Validate\+Primary\+Weapon}!Player@{Player}}
+\subsubsection[{Validate\+Primary\+Weapon}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Primary\+Weapon (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_aff737357ce6ee4b79595a7926332efa9}
+
+
+Validates primary weapon. 
+
+{\bfseries Details}
+
+A redundant method that servces no purpose at the moment. This method is made just so it\textquotesingle{}ll be less of a hassle if we decide to add per-\/weapon validations in the future.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the input is valid as a primary weapon.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_player_adaf77c65f5dddda81b83757a9edb1901}{Validate\+Weapon()} 
+\end{DoxySeeAlso}
 \hypertarget{class_player_ae9efa548a673a85c647bb2f277758ac8}{}\index{Player@{Player}!Validate\+Pyro@{Validate\+Pyro}}
 \index{Validate\+Pyro@{Validate\+Pyro}!Player@{Player}}
 \subsubsection[{Validate\+Pyro}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Pyro (
@@ -447,6 +636,32 @@ A Scout must have \char`\"{}shotgun\char`\"{} within the name of its primary wea
 \begin{DoxyReturn}{Returns}
 {\bfseries bool} -\/ Whether the player is valid as a Scout. 
 \end{DoxyReturn}
+\hypertarget{class_player_adef14e77cfa9e23cb8539b80c658a487}{}\index{Player@{Player}!Validate\+Secondary\+Weapon@{Validate\+Secondary\+Weapon}}
+\index{Validate\+Secondary\+Weapon@{Validate\+Secondary\+Weapon}!Player@{Player}}
+\subsubsection[{Validate\+Secondary\+Weapon}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Secondary\+Weapon (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_adef14e77cfa9e23cb8539b80c658a487}
+
+
+Validates secondary weapon. 
+
+{\bfseries Details}
+
+A redundant method that servces no purpose at the moment. This method is made just so it\textquotesingle{}ll be less of a hassle if we decide to add per-\/weapon validations in the future.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the input is valid as a secondary weapon.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_player_adaf77c65f5dddda81b83757a9edb1901}{Validate\+Weapon()} 
+\end{DoxySeeAlso}
 \hypertarget{class_player_ad59223bff91b71bff98ead0a1bd83738}{}\index{Player@{Player}!Validate\+Sniper@{Validate\+Sniper}}
 \index{Validate\+Sniper@{Validate\+Sniper}!Player@{Player}}
 \subsubsection[{Validate\+Sniper}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Sniper (
@@ -501,6 +716,58 @@ A Spy must have either \char`\"{}\+Sneaky\char`\"{}, \char`\"{}\+Silent\char`\"{
 \begin{DoxyReturn}{Returns}
 {\bfseries bool} -\/ Whether the player is valid as a Scout. 
 \end{DoxyReturn}
+\hypertarget{class_player_afc04c20ec1540e20c932038f0854a990}{}\index{Player@{Player}!Validate\+String@{Validate\+String}}
+\index{Validate\+String@{Validate\+String}!Player@{Player}}
+\subsubsection[{Validate\+String}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+String (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input, }
+\item[{size\+\_\+t}]{max\+Length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_afc04c20ec1540e20c932038f0854a990}
+
+
+Validates a string. 
+
+{\bfseries Details}
+
+This validation ensures a string only contains characters that can properly display within console window without affecting the format. It also takes an int input to determine the maximum length allowed for that particular string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be validated. \\
+\hline
+{\em max\+Length} & -\/ {\bfseries int} -\/ The maximum length allowed for this piece of string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the string is valid. 
+\end{DoxyReturn}
+\hypertarget{class_player_adaf77c65f5dddda81b83757a9edb1901}{}\index{Player@{Player}!Validate\+Weapon@{Validate\+Weapon}}
+\index{Validate\+Weapon@{Validate\+Weapon}!Player@{Player}}
+\subsubsection[{Validate\+Weapon}]{\setlength{\rightskip}{0pt plus 5cm}bool Player\+::\+Validate\+Weapon (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_player_adaf77c65f5dddda81b83757a9edb1901}
+
+
+Validates weapon. 
+
+{\bfseries Details}
+
+General-\/purpose validator for all weapons. 32 characters max length.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ {\bfseries std\+::string} -\/ The string to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries bool} -\/ Whether the input is valid as a weapon.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_player_afc04c20ec1540e20c932038f0854a990}{Validate\+String()} 
+\end{DoxySeeAlso}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

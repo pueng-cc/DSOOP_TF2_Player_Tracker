@@ -13,7 +13,8 @@
 int main()
 {
 	Player playerObject;
-	// Normal Tests
+	
+	// Normal Test
 	// Input:			John123
 	// Expected output:	John123
 	if (playerObject.SetName("John123") == true)
@@ -24,6 +25,8 @@ int main()
 	{
 		printf("Invalid\n");
 	}
+	
+	// Normal Test
 	// Input:			Happy Final!
 	// Expected output:	Happy Final!
 	if (playerObject.SetName("Happy Final!") == true)
@@ -34,6 +37,8 @@ int main()
 	{
 		printf("Invalid\n");
 	}
+	
+	// Normal Test
 	// Input:			No it's not happy.
 	// Expected output:	No it's not happy.
 	if (playerObject.SetName("No it's not happy.") == true)
@@ -45,7 +50,7 @@ int main()
 		printf("Invalid\n");
 	}
 
-	// Exception Tests
+	// Exception Test
 	// Input:			John123\n
 	// Expected output:	Invalid
 	if (playerObject.SetName("John123\n") == true)
@@ -56,6 +61,8 @@ int main()
 	{
 		printf("Invalid\n");
 	}
+	
+	// Exception Test
 	// Input:			Happy\t Final!
 	// Expected output:	Invalid
 	if (playerObject.SetName("Happy\t Final!") == true)
@@ -66,6 +73,8 @@ int main()
 	{
 		printf("Invalid\n");
 	}
+	
+	// Exception Test
 	// Input:			\rNo it's not happy
 	// Expected output:	Invalid
 	if (playerObject.SetName("\rNo it's not happy.") == true)

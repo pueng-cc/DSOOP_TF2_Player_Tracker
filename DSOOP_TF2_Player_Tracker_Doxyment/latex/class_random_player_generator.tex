@@ -15,6 +15,11 @@ static std\+::string \hyperlink{class_random_player_generator_a07240f9eab0983fd9
 \begin{DoxyCompactList}\small\item\em Creates random melee weapon. \end{DoxyCompactList}\item 
 static int \hyperlink{class_random_player_generator_ae5c2055098cfb2b74374bd180b60d003}{Random\+Number\+Of\+Hats} (std\+::string player\+Class)
 \begin{DoxyCompactList}\small\item\em Creates random number of hats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \hyperlink{class_random_player_generator_a62935eacd35e761d571b4725b7500850}{Random\+String} (int length)
+\begin{DoxyCompactList}\small\item\em Creates random string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Member Function Documentation}
@@ -31,7 +36,7 @@ Creates random melee weapon.
 
 {\bfseries Details}
 
-Calls Random\+String() to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
+Calls \hyperlink{class_random_player_generator_a62935eacd35e761d571b4725b7500850}{Random\+String()} to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
 
 
 \begin{DoxyParams}{Parameters}
@@ -54,7 +59,7 @@ Creates random name.
 
 {\bfseries Details}
 
-Uses Random\+String() to make a string with length of 12. Append class-\/specific limitations to the string afterward.
+Uses \hyperlink{class_random_player_generator_a62935eacd35e761d571b4725b7500850}{Random\+String()} to make a string with length of 12. Append class-\/specific limitations to the string afterward.
 
 
 \begin{DoxyParams}{Parameters}
@@ -118,7 +123,7 @@ Creates random primary weapon.
 
 {\bfseries Details}
 
-Calls Random\+String() to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
+Calls \hyperlink{class_random_player_generator_a62935eacd35e761d571b4725b7500850}{Random\+String()} to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
 
 
 \begin{DoxyParams}{Parameters}
@@ -141,7 +146,7 @@ Creates random secondary weapon.
 
 {\bfseries Details}
 
-Calls Random\+String() to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
+Calls \hyperlink{class_random_player_generator_a62935eacd35e761d571b4725b7500850}{Random\+String()} to generate a string of 12 characters long. Appends class-\/specific limitations afterward.
 
 
 \begin{DoxyParams}{Parameters}
@@ -150,6 +155,29 @@ Calls Random\+String() to generate a string of 12 characters long. Appends class
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 {\bfseries std\+::string} -\/ The randomly generated secondary weapon. 
+\end{DoxyReturn}
+\hypertarget{class_random_player_generator_a62935eacd35e761d571b4725b7500850}{}\index{Random\+Player\+Generator@{Random\+Player\+Generator}!Random\+String@{Random\+String}}
+\index{Random\+String@{Random\+String}!Random\+Player\+Generator@{Random\+Player\+Generator}}
+\subsubsection[{Random\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Random\+Player\+Generator\+::\+Random\+String (
+\begin{DoxyParamCaption}
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_random_player_generator_a62935eacd35e761d571b4725b7500850}
+
+
+Creates random string. 
+
+{\bfseries Details}
+
+Creates a random string of A\+S\+C\+I\+I 32$\sim$126. Length of the string is determined by parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & -\/ {\bfseries int} -\/ The length of the string to create.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries std\+::string} -\/ The randomly generated string. 
 \end{DoxyReturn}
 
 
