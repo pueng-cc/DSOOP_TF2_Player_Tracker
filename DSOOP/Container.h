@@ -1,4 +1,8 @@
-
+//Project		: DS OOP
+//File Name		: Container.h
+//Programmer	: Lauchlin 
+//Date			: 2015/4/15
+//Description	: This file holds the Class Definition for the Container Class as well as the prototypes for its methodes.
 
 #pragma once
 

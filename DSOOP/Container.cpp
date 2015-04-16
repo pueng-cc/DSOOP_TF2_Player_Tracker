@@ -1,6 +1,10 @@
+//Project		: DS OOP
+//File Name		: Container.cpp
+//Programmer	: Lauchlin
+//Date			: 2015/4/15
+//Description	: This file holds all the Container class's methode definitions.
+
 #include "Container.h"
-
-
 
 
 /// 
@@ -563,7 +567,7 @@ bool Container::CrossFieldValidation(Player playerToValidate)
 		}
 		else if (playerClass.compare("Spy") == 0)		//Validate if the player is a pyro.
 		{
-			if (playerToValidate.ValidateSniper() == false)
+			if (playerToValidate.ValidateSpy() == false)
 			{
 				returnValue = false;
 				throw ("All of Spy's weapons must include the any of the following words: \"Sneaky\", \"Silent\", \"Discreet\".");
@@ -635,6 +639,7 @@ std::string Container::ReturnContainer(void)
 			returnString.append("\n");
 		}
 		returnString.append(myVectorIter->GetName());
+		myVectorIter++;
 	}
 
 	return returnString;
