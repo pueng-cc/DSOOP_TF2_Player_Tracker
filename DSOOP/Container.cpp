@@ -257,27 +257,29 @@ Player* Container::GetByName(string searchName)
 string Container::GetPlayerInfo(string searchClass)
 {
 	string returnString;
-	string tempString;
 	Player* tempPlayer = GetByName(searchClass);
+	int tempInt = 0;
 
-	returnString.append(tempPlayer->GetName());				//Appends the name and then a new line.
-	returnString.append("\n");
+	if (tempPlayer != NULL)
+	{
+		returnString.append(tempPlayer->GetName());				//Appends the name and then a new line.
+		returnString.append("\n");
 
-	returnString.append(tempPlayer->GetPlayerClass());		//Appends the class and then a new line.
-	returnString.append("\n");
+		returnString.append(tempPlayer->GetPlayerClass());		//Appends the class and then a new line.
+		returnString.append("\n");
 
-	returnString.append(tempPlayer->GetPrimaryWeapon());	//Appends the primary weapon and then a new line.
-	returnString.append("\n");
+		returnString.append(tempPlayer->GetPrimaryWeapon());	//Appends the primary weapon and then a new line.
+		returnString.append("\n");
 
-	returnString.append(tempPlayer->GetSecondaryWeapon());	//Appends the secondary weapon and then a new line.
-	returnString.append("\n");
+		returnString.append(tempPlayer->GetSecondaryWeapon());	//Appends the secondary weapon and then a new line.
+		returnString.append("\n");
 
-	returnString.append(tempPlayer->GetMeleeWeapon());		//Appends the melee weapon and then a new line.
-	returnString.append("\n");
+		returnString.append(tempPlayer->GetMeleeWeapon());		//Appends the melee weapon and then a new line.
+		returnString.append("\n");
 
-	tempString = tempPlayer->GetNumberOfHats();				//Converts the numberOfHats in to a string.
-	returnString.append(tempString);						//Then Appends the numberOfHats and then a new line.
-	returnString.append("\n");
+		tempInt = tempPlayer->GetNumberOfHats();				//Store the number of hats in an int.
+		returnString.append(to_string(tempInt));				//Then Appends the numberOfHats and then a new line. "to_string()" converts the int to a string.
+	}
 
 	return returnString;
 }
@@ -296,14 +298,22 @@ string Container::GetPlayerInfo(string searchClass)
 string Container::SearchByClass(string searchClass)
 {
 	string returnString;
+	bool firstMember = true;
 
 	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
 	while (myVectorIter != containerVector.end())	//Go until the end of list.
 	{
 		if (myVectorIter->GetPlayerClass() == searchClass)
 		{
+			if (firstMember == true)
+			{
+				firstMember = false;
+			}
+			else
+			{
+				returnString.append("\n");
+			}
 			returnString.append(myVectorIter->GetName());
-			returnString.append("\n");
 		}
 		myVectorIter++;
 	}
@@ -326,14 +336,23 @@ string Container::SearchByClass(string searchClass)
 string Container::SearchByHats(int numOfHats)
 {
 	string returnString;
+	bool firstMember = true;
 
 	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
 	while (myVectorIter != containerVector.end())	//Go until the end of list.
 	{
 		if (myVectorIter->GetNumberOfHats() == numOfHats)
 		{
+			if (firstMember == true)
+			{
+				firstMember = false;
+			}
+			else
+			{
+				returnString.append("\n");
+			}
 			returnString.append(myVectorIter->GetName());
-			returnString.append("\n");
+			
 		}
 		myVectorIter++;
 	}
