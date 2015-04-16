@@ -10,18 +10,16 @@
 
 using namespace std;
 
-
 ///
-/// \brief Default Constructor for the Container class
+/// \class 
+///
+/// \brief Container class.
 /// \details <b>Details</b>
 ///
-/// This is the default constructor methode used by the 
-/// Container objects on instantiation.
-/// It currently does no special instantiation of any kind.
-///
-/// \param input - This methode takes no inputs.
-///
-/// \return - This methode returns nothing.
+/// <b>Detailed Description</b>
+/// This is the class is a container for Player objects. It holds all the objects in a vector.
+/// The reason for this is players are sorted by there name and vectors are great for adding/insterting/removing.
+/// Players are added one by one in to the proper place in the vector. 
 ///
 class Container
 {
@@ -33,7 +31,6 @@ public:
 
 	//Constructors
 	Container(void);
-	//container(File stuffs);	//For reading in from a file.
 
 	//Destructor
 	~Container();

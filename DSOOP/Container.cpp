@@ -2,8 +2,7 @@
 
 
 
-///
-/// \class 
+
 /// 
 /// \brief Default Constructor for the Container class
 /// \details <b>Details</b>
@@ -382,6 +381,7 @@ bool Container::StoreInFile(void)
 	bool errorStatus = false;
 	int iterCount = 0;
 
+	remove("LauchlinMor.txt");
 	dataFile.open("LauchlinMor.txt", ios::in | ios::binary);
 
 	if (dataFile.fail())
