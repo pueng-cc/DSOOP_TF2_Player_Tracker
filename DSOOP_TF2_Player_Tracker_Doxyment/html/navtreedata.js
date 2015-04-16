@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "DSOOP TF2 Player Tracker", "index.html", [
+  [ "DSOOP_TF2_Player_Tracker", "index.html", [
     [ "Team Fortress 2 Player Tracker", "index.html", [
       [ "Program Introduction", "index.html#intro", null ],
       [ "Special Release Notes", "index.html#notes", null ],

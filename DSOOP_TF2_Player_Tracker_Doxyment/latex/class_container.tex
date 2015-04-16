@@ -1,27 +1,34 @@
 \hypertarget{class_container}{}\section{Container Class Reference}
 \label{class_container}\index{Container@{Container}}
+
+
+Default Constructor for the \hyperlink{class_container}{Container} class.  
+
+
+
+
+{\ttfamily \#include $<$Container.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_container_a5231ead51bcdd1a9b1f497414e76b6f4}{Container} (void)
-\begin{DoxyCompactList}\small\item\em Default Constructor for the \hyperlink{class_container}{Container} class. \end{DoxyCompactList}\item 
 \hyperlink{class_container_ae9f5d07bfc3defda274aa06091c19f56}{$\sim$\+Container} ()
 \begin{DoxyCompactList}\small\item\em Destructor for the \hyperlink{class_container}{Container} class. \end{DoxyCompactList}\item 
 bool \hyperlink{class_container_adcb2699db821af086db2fbce6a9470e1}{Add\+To\+Container} (\hyperlink{class_player}{Player} new\+Player)
 \begin{DoxyCompactList}\small\item\em Add one new Item to the \hyperlink{class_container}{Container}. \end{DoxyCompactList}\item 
-bool \hyperlink{class_container_ae3929ee46a7b14b864a52cbc6f3f4e44}{Create\+New\+Player} (string player\+Name, string player\+Class, string weapon\+Primary, string weapon\+Secondary, string weapon\+Melee, int number\+Of\+Hats=0)
+bool \hyperlink{class_container_a7a2634d599cbf831aba29062fdbbd1a2}{Create\+New\+Player} (std\+::string player\+Name, std\+::string player\+Class, std\+::string weapon\+Primary, std\+::string weapon\+Secondary, std\+::string weapon\+Melee, int number\+Of\+Hats=0)
 \begin{DoxyCompactList}\small\item\em Creates and adds a new player to the container. \end{DoxyCompactList}\item 
-bool \hyperlink{class_container_a83bdee8dd09ef673375f337de4763481}{Delete\+From\+Container} (string player\+Name)
+bool \hyperlink{class_container_a80c04381837dce92a2b7e466ebd087e8}{Delete\+From\+Container} (std\+::string player\+Name)
 \begin{DoxyCompactList}\small\item\em Deletes one Item from the \hyperlink{class_container}{Container}. \end{DoxyCompactList}\item 
 void \hyperlink{class_container_ae840ec5b490033434a9af64722286e1b}{Delete\+Container} (void)
 \begin{DoxyCompactList}\small\item\em Deletes entire \hyperlink{class_container}{Container}. \end{DoxyCompactList}\item 
-\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_container_a08fc1eb5b5871afe1bc0f821c935ee5c}{Get\+By\+Name} (string search\+Name)
+\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_container_a587a1d670dc5b27e39956463acce3b4f}{Get\+By\+Name} (std\+::string search\+Name)
 \begin{DoxyCompactList}\small\item\em Searches for a player in the \hyperlink{class_container}{Container}. \end{DoxyCompactList}\item 
-string \hyperlink{class_container_a5beb2ec33f09af68001cdef6de321759}{Get\+Player\+Info} (string search\+Name)
+std\+::string \hyperlink{class_container_ad3c15a0dbb0a718322c1347676dc62ac}{Get\+Player\+Info} (std\+::string search\+Name)
 \begin{DoxyCompactList}\small\item\em Gets a the player information. \end{DoxyCompactList}\item 
-string \hyperlink{class_container_a75f0e33e9004113fe8630022b378358c}{Search\+By\+Class} (string search\+Class)
+std\+::string \hyperlink{class_container_a136a4e9bbd1b018e6572fb5ac4f2e133}{Search\+By\+Class} (std\+::string search\+Class)
 \begin{DoxyCompactList}\small\item\em Gets a list of the players of that class. \end{DoxyCompactList}\item 
-string \hyperlink{class_container_ac67fdca3ba82e56a1795f748aa2a4e89}{Search\+By\+Hats} (int num\+Of\+Hats)
+std\+::string \hyperlink{class_container_ae84b8946992689f0da2278719cbe9fb1}{Search\+By\+Hats} (int num\+Of\+Hats)
 \begin{DoxyCompactList}\small\item\em Gets a list of the players with n number of hats. \end{DoxyCompactList}\item 
 bool \hyperlink{class_container_a5a41ee2f12b10f834bcf3814dfcb7e77}{Retreive\+From\+File} (void)
 \begin{DoxyCompactList}\small\item\em Retreive \hyperlink{class_container}{Container} from a file. \end{DoxyCompactList}\item 
@@ -29,21 +36,13 @@ bool \hyperlink{class_container_a3fbf493b69d0fdb0428ba9fd4384a1ae}{Store\+In\+Fi
 \begin{DoxyCompactList}\small\item\em Stores the \hyperlink{class_container}{Container} to a file. \end{DoxyCompactList}\item 
 bool \hyperlink{class_container_a10e9ba7886699c51a9de5f7c48ba81a8}{Cross\+Field\+Validation} (\hyperlink{class_player}{Player} player\+To\+Validate)
 \begin{DoxyCompactList}\small\item\em Validates a \hyperlink{class_player}{Player} object. \end{DoxyCompactList}\item 
-\hypertarget{class_container_aa7aba0b9646397931010aee0da898dda}{}void {\bfseries Display\+Container} (void)\label{class_container_aa7aba0b9646397931010aee0da898dda}
-
-\end{DoxyCompactItemize}
-
-
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_container_a5231ead51bcdd1a9b1f497414e76b6f4}{}\index{Container@{Container}!Container@{Container}}
-\index{Container@{Container}!Container@{Container}}
-\subsubsection[{Container}]{\setlength{\rightskip}{0pt plus 5cm}Container\+::\+Container (
-\begin{DoxyParamCaption}
-\item[{void}]{}
-\end{DoxyParamCaption}
-)}\label{class_container_a5231ead51bcdd1a9b1f497414e76b6f4}
+std\+::string \hyperlink{class_container_a5a483ed7cdea2dd32b02cf94fd21822a}{Return\+Container} (void)
+\begin{DoxyCompactList}\small\item\em Returns the entire container. \end{DoxyCompactList}\item 
+void \hyperlink{class_container_aa7aba0b9646397931010aee0da898dda}{Display\+Container} (void)
+\begin{DoxyCompactList}\small\item\em Displays all the container entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
 Default Constructor for the \hyperlink{class_container}{Container} class. 
 
 {\bfseries Details}
@@ -58,6 +57,9 @@ This is the default constructor methode used by the \hyperlink{class_container}{
 \begin{DoxyReturn}{Returns}
 -\/ This methode returns nothing. 
 \end{DoxyReturn}
+
+
+\subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_container_ae9f5d07bfc3defda274aa06091c19f56}{}\index{Container@{Container}!````~Container@{$\sim$\+Container}}
 \index{````~Container@{$\sim$\+Container}!Container@{Container}}
 \subsubsection[{$\sim$\+Container}]{\setlength{\rightskip}{0pt plus 5cm}Container\+::$\sim$\+Container (
@@ -107,18 +109,18 @@ This methode is used to add a single item to the container. It will add the enti
 \begin{DoxyReturn}{Returns}
 -\/ {\bfseries bool} -\/ true if the object was added to the \hyperlink{class_container}{Container}. false if it was not (Due to duplicate name). 
 \end{DoxyReturn}
-\hypertarget{class_container_ae3929ee46a7b14b864a52cbc6f3f4e44}{}\index{Container@{Container}!Create\+New\+Player@{Create\+New\+Player}}
+\hypertarget{class_container_a7a2634d599cbf831aba29062fdbbd1a2}{}\index{Container@{Container}!Create\+New\+Player@{Create\+New\+Player}}
 \index{Create\+New\+Player@{Create\+New\+Player}!Container@{Container}}
 \subsubsection[{Create\+New\+Player}]{\setlength{\rightskip}{0pt plus 5cm}bool Container\+::\+Create\+New\+Player (
 \begin{DoxyParamCaption}
-\item[{string}]{player\+Name, }
-\item[{string}]{player\+Class, }
-\item[{string}]{weapon\+Primary, }
-\item[{string}]{weapon\+Secondary, }
-\item[{string}]{weapon\+Melee, }
+\item[{std\+::string}]{player\+Name, }
+\item[{std\+::string}]{player\+Class, }
+\item[{std\+::string}]{weapon\+Primary, }
+\item[{std\+::string}]{weapon\+Secondary, }
+\item[{std\+::string}]{weapon\+Melee, }
 \item[{int}]{number\+Of\+Hats = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}\label{class_container_ae3929ee46a7b14b864a52cbc6f3f4e44}
+)}\label{class_container_a7a2634d599cbf831aba29062fdbbd1a2}
 
 
 Creates and adds a new player to the container. 
@@ -191,13 +193,13 @@ This methode will delete all contents of the container. Accomplished using the V
 \begin{DoxyReturn}{Returns}
 -\/ This methode returns nothing. 
 \end{DoxyReturn}
-\hypertarget{class_container_a83bdee8dd09ef673375f337de4763481}{}\index{Container@{Container}!Delete\+From\+Container@{Delete\+From\+Container}}
+\hypertarget{class_container_a80c04381837dce92a2b7e466ebd087e8}{}\index{Container@{Container}!Delete\+From\+Container@{Delete\+From\+Container}}
 \index{Delete\+From\+Container@{Delete\+From\+Container}!Container@{Container}}
 \subsubsection[{Delete\+From\+Container}]{\setlength{\rightskip}{0pt plus 5cm}bool Container\+::\+Delete\+From\+Container (
 \begin{DoxyParamCaption}
-\item[{string}]{player\+Name}
+\item[{std\+::string}]{player\+Name}
 \end{DoxyParamCaption}
-)}\label{class_container_a83bdee8dd09ef673375f337de4763481}
+)}\label{class_container_a80c04381837dce92a2b7e466ebd087e8}
 
 
 Deletes one Item from the \hyperlink{class_container}{Container}. 
@@ -214,13 +216,36 @@ This methode will delete a single Item from the \hyperlink{class_container}{Cont
 \begin{DoxyReturn}{Returns}
 -\/ This methode retuns nothing. 
 \end{DoxyReturn}
-\hypertarget{class_container_a08fc1eb5b5871afe1bc0f821c935ee5c}{}\index{Container@{Container}!Get\+By\+Name@{Get\+By\+Name}}
+\hypertarget{class_container_aa7aba0b9646397931010aee0da898dda}{}\index{Container@{Container}!Display\+Container@{Display\+Container}}
+\index{Display\+Container@{Display\+Container}!Container@{Container}}
+\subsubsection[{Display\+Container}]{\setlength{\rightskip}{0pt plus 5cm}void Container\+::\+Display\+Container (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_container_aa7aba0b9646397931010aee0da898dda}
+
+
+Displays all the container entries. 
+
+{\bfseries Details}
+
+This methode will display all container entires in a formated fashion. Normaly this would be done entirly through the View Layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ This methode takes no parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ This methode returns nothing. 
+\end{DoxyReturn}
+\hypertarget{class_container_a587a1d670dc5b27e39956463acce3b4f}{}\index{Container@{Container}!Get\+By\+Name@{Get\+By\+Name}}
 \index{Get\+By\+Name@{Get\+By\+Name}!Container@{Container}}
 \subsubsection[{Get\+By\+Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player} $\ast$ Container\+::\+Get\+By\+Name (
 \begin{DoxyParamCaption}
-\item[{string}]{search\+Name}
+\item[{std\+::string}]{search\+Name}
 \end{DoxyParamCaption}
-)}\label{class_container_a08fc1eb5b5871afe1bc0f821c935ee5c}
+)}\label{class_container_a587a1d670dc5b27e39956463acce3b4f}
 
 
 Searches for a player in the \hyperlink{class_container}{Container}. 
@@ -237,13 +262,13 @@ This methode will search for a player in the \hyperlink{class_container}{Contain
 \begin{DoxyReturn}{Returns}
 {\bfseries Player$\ast$} -\/ Will return a pointer to the object if it exists. Otherwise will return N\+U\+L\+L. 
 \end{DoxyReturn}
-\hypertarget{class_container_a5beb2ec33f09af68001cdef6de321759}{}\index{Container@{Container}!Get\+Player\+Info@{Get\+Player\+Info}}
+\hypertarget{class_container_ad3c15a0dbb0a718322c1347676dc62ac}{}\index{Container@{Container}!Get\+Player\+Info@{Get\+Player\+Info}}
 \index{Get\+Player\+Info@{Get\+Player\+Info}!Container@{Container}}
-\subsubsection[{Get\+Player\+Info}]{\setlength{\rightskip}{0pt plus 5cm}string Container\+::\+Get\+Player\+Info (
+\subsubsection[{Get\+Player\+Info}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Container\+::\+Get\+Player\+Info (
 \begin{DoxyParamCaption}
-\item[{string}]{search\+Class}
+\item[{std\+::string}]{search\+Class}
 \end{DoxyParamCaption}
-)}\label{class_container_a5beb2ec33f09af68001cdef6de321759}
+)}\label{class_container_ad3c15a0dbb0a718322c1347676dc62ac}
 
 
 Gets a the player information. 
@@ -261,7 +286,7 @@ This methode will get the players information and return all the fields in a sin
 {\bfseries string} -\/ Will return a string containing the name of each player by that class. 
 \end{DoxyReturn}
 \begin{DoxySeeAlso}{See also}
-\hyperlink{class_container_a08fc1eb5b5871afe1bc0f821c935ee5c}{Get\+By\+Name()} 
+\hyperlink{class_container_a587a1d670dc5b27e39956463acce3b4f}{Get\+By\+Name()} 
 \end{DoxySeeAlso}
 \hypertarget{class_container_a5a41ee2f12b10f834bcf3814dfcb7e77}{}\index{Container@{Container}!Retreive\+From\+File@{Retreive\+From\+File}}
 \index{Retreive\+From\+File@{Retreive\+From\+File}!Container@{Container}}
@@ -286,13 +311,36 @@ This methode will retreive the content of the \hyperlink{class_container}{Contai
 \begin{DoxyReturn}{Returns}
 {\bfseries bool} -\/ Will return a true value if the file was succesfully retreived. False otherwise. 
 \end{DoxyReturn}
-\hypertarget{class_container_a75f0e33e9004113fe8630022b378358c}{}\index{Container@{Container}!Search\+By\+Class@{Search\+By\+Class}}
-\index{Search\+By\+Class@{Search\+By\+Class}!Container@{Container}}
-\subsubsection[{Search\+By\+Class}]{\setlength{\rightskip}{0pt plus 5cm}string Container\+::\+Search\+By\+Class (
+\hypertarget{class_container_a5a483ed7cdea2dd32b02cf94fd21822a}{}\index{Container@{Container}!Return\+Container@{Return\+Container}}
+\index{Return\+Container@{Return\+Container}!Container@{Container}}
+\subsubsection[{Return\+Container}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Container\+::\+Return\+Container (
 \begin{DoxyParamCaption}
-\item[{string}]{search\+Class}
+\item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_container_a75f0e33e9004113fe8630022b378358c}
+)}\label{class_container_a5a483ed7cdea2dd32b02cf94fd21822a}
+
+
+Returns the entire container. 
+
+{\bfseries Details}
+
+This methode will return all the names that are in the container. It appends each name to a string that is then returned. Each name is seperated by a \char`\"{}\textbackslash{}n\char`\"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & -\/ This methode takes no parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ {\bfseries string{\bfseries  -\/ This methode a string of all the names in the database. }}
+\end{DoxyReturn}
+\hypertarget{class_container_a136a4e9bbd1b018e6572fb5ac4f2e133}{}\index{Container@{Container}!Search\+By\+Class@{Search\+By\+Class}}
+\index{Search\+By\+Class@{Search\+By\+Class}!Container@{Container}}
+\subsubsection[{Search\+By\+Class}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Container\+::\+Search\+By\+Class (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{search\+Class}
+\end{DoxyParamCaption}
+)}\label{class_container_a136a4e9bbd1b018e6572fb5ac4f2e133}
 
 
 Gets a list of the players of that class. 
@@ -309,13 +357,13 @@ This methode will get a list of all the players that have that number of hats. I
 \begin{DoxyReturn}{Returns}
 {\bfseries string} -\/ Will return a string containing the name of each player by that class. 
 \end{DoxyReturn}
-\hypertarget{class_container_ac67fdca3ba82e56a1795f748aa2a4e89}{}\index{Container@{Container}!Search\+By\+Hats@{Search\+By\+Hats}}
+\hypertarget{class_container_ae84b8946992689f0da2278719cbe9fb1}{}\index{Container@{Container}!Search\+By\+Hats@{Search\+By\+Hats}}
 \index{Search\+By\+Hats@{Search\+By\+Hats}!Container@{Container}}
-\subsubsection[{Search\+By\+Hats}]{\setlength{\rightskip}{0pt plus 5cm}string Container\+::\+Search\+By\+Hats (
+\subsubsection[{Search\+By\+Hats}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Container\+::\+Search\+By\+Hats (
 \begin{DoxyParamCaption}
 \item[{int}]{num\+Of\+Hats}
 \end{DoxyParamCaption}
-)}\label{class_container_ac67fdca3ba82e56a1795f748aa2a4e89}
+)}\label{class_container_ae84b8946992689f0da2278719cbe9fb1}
 
 
 Gets a list of the players with n number of hats. 

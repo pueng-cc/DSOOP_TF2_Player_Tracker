@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['searchbyclass',['SearchByClass',['../class_container.html#a75f0e33e9004113fe8630022b378358c',1,'Container']]],
-  ['searchbyhats',['SearchByHats',['../class_container.html#ac67fdca3ba82e56a1795f748aa2a4e89',1,'Container']]],
+  ['searchbyclass',['SearchByClass',['../class_container.html#a136a4e9bbd1b018e6572fb5ac4f2e133',1,'Container']]],
+  ['searchbyhats',['SearchByHats',['../class_container.html#ae84b8946992689f0da2278719cbe9fb1',1,'Container']]],
   ['setmeleeweapon',['SetMeleeWeapon',['../class_player.html#a169c7512b6f03558fc322a603b19d5f1',1,'Player']]],
   ['setname',['SetName',['../class_player.html#a8bf1b3dc1805bd3dc5e44531fac4ec1a',1,'Player']]],
   ['setnumberofhats',['SetNumberOfHats',['../class_player.html#af3fe2c81e1cb35fdd0cc532a92f99c8c',1,'Player']]],
