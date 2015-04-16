@@ -382,12 +382,6 @@ bool Container::StoreInFile(void)
 	bool errorStatus = false;
 	int iterCount = 0;
 
-	dataFile.open("LauchlinMor.txt", ios::binary);
-
-
-
-	/*
-	remove("LauchlinMor.txt");
 	dataFile.open("LauchlinMor.txt", ios::in | ios::binary);
 
 	if (dataFile.fail())
@@ -400,7 +394,7 @@ bool Container::StoreInFile(void)
 			throw ("File does not exist!");
 		}
 	}
-	*/
+
 	myVectorIter = containerVector.begin();	//Set iterator to the first element of our list.
 	while (myVectorIter != containerVector.end())	//Go until the end of list.
 	{

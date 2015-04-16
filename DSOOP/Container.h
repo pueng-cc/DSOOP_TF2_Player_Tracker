@@ -15,7 +15,6 @@ using namespace std;
 /// \brief Default Constructor for the Container class
 /// \details <b>Details</b>
 ///
-/// <b>Detailed Description</b>
 /// This is the default constructor methode used by the 
 /// Container objects on instantiation.
 /// It currently does no special instantiation of any kind.
