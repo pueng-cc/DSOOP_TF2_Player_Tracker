@@ -98,7 +98,7 @@ void UI::AddPlayerUI()
 	char userMenuInput = 0;
 	bool complete = false;
 
-	
+
 	while (complete != true)
 	{
 		system("CLS");
@@ -126,13 +126,13 @@ void UI::AddPlayerUI()
 		printf("User number key to select menu item.\n");
 
 		userMenuInput = getch();
-		cin.clear();
+		std::cin.clear();
 		fflush(stdin);
 		if (userMenuInput == '1')
 		{
 			system("CLS");
 			printf("Enter Name: ");
-			getline(cin, newName);
+			getline(std::cin, newName);
 		}
 		else if (userMenuInput == '2')
 		{
@@ -196,25 +196,25 @@ void UI::AddPlayerUI()
 		{
 			system("CLS");
 			printf("Enter Primary Weapon: ");
-			getline(cin, newPrimaryWeapon);
+			getline(std::cin, newPrimaryWeapon);
 		}
 		else if (userMenuInput == '4')
 		{
 			system("CLS");
 			printf("Enter Secondary Weapon: ");
-			getline(cin, newSecondaryWeapon);
+			getline(std::cin, newSecondaryWeapon);
 		}
 		else if (userMenuInput == '5')
 		{
 			system("CLS");
 			printf("Enter Melee Weapon: ");
-			getline(cin, newMeleeWeapon);
+			getline(std::cin, newMeleeWeapon);
 		}
 		else if (userMenuInput == '6')
 		{
 			system("CLS");
 			printf("Enter Number of Hats: ");
-			getline(cin, newNumberOfHatsStringBuffer);
+			getline(std::cin, newNumberOfHatsStringBuffer);
 			newNumberOfHats = atoi(newNumberOfHatsStringBuffer.c_str());
 		}
 		else if (userMenuInput == '9')
@@ -239,7 +239,7 @@ void UI::AddPlayerUI()
 					getch();
 				}
 			}
-			catch(char* exceptionMessage)
+			catch (char* exceptionMessage)
 			{
 				system("CLS");
 				printf("Error: %s\n", exceptionMessage);
@@ -255,15 +255,49 @@ void UI::AddPlayerUI()
 	}
 }
 
+///
+/// \brief Delete player UI
+/// \details <b>Details</b>
+///
+/// Prompts user for a name. Delete entry with matching name from the container.
+/// Display whether the entry has been deleted or not.
+///
+/// \return Nothing
+///
 void UI::DeletePlayerUI()
 {
-
+	std::string nameToDelete = "";
+	bool deleteSuccess = false;
+	system("CLS");
+	printf("Enter Name of the player to be deleted: ");
+	std::cin >> nameToDelete;
+	deleteSuccess = theContainer->DeleteFromContainer(nameToDelete);
+	printf("\n");
+	if (deleteSuccess == true)
+	{
+		printf("Delete Successful.\n");
+	}
+	else
+	{
+		printf("Error: Player with matching name cannot be found.\n");
+	}
+	printf("\n");
+	printf("Press any key to continue.\n");
+	getch();
 }
 
+///
+/// \brief Search Player UI
+/// \details <b>Details</b>
+///
+/// Search Player menu to redirect user to one of the search method.
+///
+/// \return Nothing
+///
 void UI::SearchPlayerUI()
 {
 	char userMenuInput = 0;
-	
+
 	while (userMenuInput != '0')
 	{
 		system("CLS");
@@ -290,6 +324,24 @@ void UI::SearchPlayerUI()
 	}
 }
 
+///
+/// \brief Display One Player UI
+/// \details <b>Details</b>
+///
+/// Takes a string that contains a player's info. Parses the string and display the information.
+/// pre-parsed format: [name]\n[playerClass]\n[primaryWeapon]\n[secondaryWeapon]\n[meleeWeapon]\n[numberOfHats]
+/// parsed format:
+/// Name: [name]
+/// Class: [playerClass]
+/// Primary Weapon: [primaryWeapon]
+/// Secondary Weapon: [secondaryWeapon]
+/// Melee Weapon: [meleeWeapon]
+/// Number of Hats: [numberOfHats]
+///
+/// \param playerInfo - <b>std::string</b> - unparsed player info
+///
+/// \return Nothing
+///
 void UI::DisplayOnePlayerUI(std::string playerInfo)
 {
 	//string will be returned in "[name]\n[playerClass]\n[primaryWeapon]\n[secondaryWeapon]\n[meleeWeapon]\n[numberOfHats]" format.
@@ -303,24 +355,24 @@ void UI::DisplayOnePlayerUI(std::string playerInfo)
 	size_t nextLineLocation = 0;
 
 	nextLineLocation = bufferForParsing.find("\n");
-	tempName = bufferForParsing.substr(nextLineLocation - 1);
-	bufferForParsing.erase(nextLineLocation);
+	tempName = bufferForParsing.substr(0, nextLineLocation);
+	bufferForParsing.erase(0, nextLineLocation + 1);
 
 	nextLineLocation = bufferForParsing.find("\n");
-	tempPlayerClass = bufferForParsing.substr(nextLineLocation - 1);
-	bufferForParsing.erase(nextLineLocation);
+	tempPlayerClass = bufferForParsing.substr(0, nextLineLocation);
+	bufferForParsing.erase(0, nextLineLocation + 1);
 
 	nextLineLocation = bufferForParsing.find("\n");
-	tempPrimaryWeapon = bufferForParsing.substr(nextLineLocation - 1);
-	bufferForParsing.erase(nextLineLocation);
+	tempPrimaryWeapon = bufferForParsing.substr(0, nextLineLocation);
+	bufferForParsing.erase(0, nextLineLocation + 1);
 
 	nextLineLocation = bufferForParsing.find("\n");
-	tempSecondaryWeapon = bufferForParsing.substr(nextLineLocation - 1);
-	bufferForParsing.erase(nextLineLocation);
+	tempSecondaryWeapon = bufferForParsing.substr(0, nextLineLocation);
+	bufferForParsing.erase(0, nextLineLocation + 1);
 
 	nextLineLocation = bufferForParsing.find("\n");
-	tempMeleeWeapon = bufferForParsing.substr(nextLineLocation - 1);
-	bufferForParsing.erase(nextLineLocation);
+	tempMeleeWeapon = bufferForParsing.substr(0, nextLineLocation);
+	bufferForParsing.erase(0, nextLineLocation + 1);
 
 	tempNumberOfHats = bufferForParsing;
 
@@ -332,6 +384,17 @@ void UI::DisplayOnePlayerUI(std::string playerInfo)
 	printf("Number of Hats: %d\n", tempNumberOfHats);
 }
 
+///
+/// \brief Display Many Players UI
+/// \details <b>Details</b>
+///
+/// Takes a string with names of multiple existing players. Parses the names and search each 
+/// of the name in theContainer. Calls DisplayOnePlayerUI() for each of the search result.
+///
+/// \param playerInfo - <b>std::string</b> - unparsed names of players.
+///
+/// \return Nothing
+///
 void UI::DisplayManyPlayersUI(std::string allTheNames)
 {
 	std::string namesToParse = allTheNames;
@@ -349,21 +412,32 @@ void UI::DisplayManyPlayersUI(std::string allTheNames)
 		}
 		else
 		{
-			nameBuffer = namesToParse.substr(nextLineLocation - 1);
+			nameBuffer = namesToParse.substr(0, nextLineLocation);
 			DisplayOnePlayerUI(theContainer->GetPlayerInfo(nameBuffer));
-			namesToParse.erase(nextLineLocation);
-			displayCounter++;
+			printf("\n");
+			namesToParse.erase(0, nextLineLocation + 1);
+			displayCounter = displayCounter + 1;
 		}
 		if (displayCounter == 3 && allNamesParsed == false)
 		{
+			printf("Press any key to continue.\n");
 			printf("\n");
-			printf("Press any key to continue.");
 			getch();
 			displayCounter = 0;
 		}
 	}
 }
 
+///
+/// \brief Search by Name UI
+/// \details <b>Details</b>
+///
+/// This UI will prompt user to enter name of a player. It will then call Container::GetPlayerInfo() to 
+/// retrieve info of the player with matching name. If such player exists, it'll call 
+/// DisplayOnePlayerUI() to display the info of the player.
+///
+/// \return Nothing
+///
 void UI::SearchByNameUI()
 {
 	std::string nameToSearch = "";
@@ -372,30 +446,53 @@ void UI::SearchByNameUI()
 	printf("Search By Name\n");
 	printf("\n");
 	printf("Enter Name: ");
-	cin >> nameToSearch;
+	std::cin >> nameToSearch;
 	searchResult = theContainer->GetPlayerInfo(nameToSearch);
 	system("CLS");
 	if (searchResult.compare("") == 0)
 	{
-		printf("Error: Player with \"%s\" as name cannot be found\n");
+		printf("Error: Player with \"%s\" as name cannot be found\n", nameToSearch);
 	}
 	else
 	{
 		DisplayOnePlayerUI(searchResult);
 	}
 	printf("\n");
-	printf("Press any key to continue.");
+	printf("Press any key to continue.\n");
 	getch();
 }
 
+///
+/// \brief Search by Class UI
+/// \details <b>Details</b>
+///
+/// Prompts user to select a class to search with. It will call Container::SearchByClass() to 
+/// retrieve a string containing all players with matching class. It will call DisplayManyPlayersUI() 
+/// to display the info of all matching players.
+///
+/// \return Nothing
+///
 void UI::SearchByClassUI()
 {
 	std::string classToSearch = "";
 	std::string searchResult = "";
 	char userMenuInput = 0;
 	system("CLS");
+
 	printf("Search By Class\n");
 	printf("\n");
+	printf("1) Scout\n");
+	printf("2) Soldier\n");
+	printf("3) Pyro\n");
+	printf("4) Demoman\n");
+	printf("5) Heavy\n");
+	printf("6) Engineer\n");
+	printf("7) Medic\n");
+	printf("8) Sniper\n");
+	printf("9) Spy\n");
+	printf("\n");
+	printf("Use number key to select\n");
+
 	while (userMenuInput < '1' || userMenuInput > '9')
 	{
 		userMenuInput = getch();
@@ -437,19 +534,48 @@ void UI::SearchByClassUI()
 			classToSearch = "Spy";
 		}
 	}
-
+	system("CLS");
 	searchResult = theContainer->SearchByClass(classToSearch);
 	DisplayManyPlayersUI(searchResult);
-	printf("\n");
-	printf("All players with matching class has been displayed.");
-	printf("\n");
-	printf("Press any key to continue.");
+	printf("All players with matching class have been displayed.\n");
 	getch();
 }
 
+///
+/// \brief Display Many Players UI
+/// \details <b>Details</b>
+///
+/// Prompts user to enter a number. Calls Container::SearchByHats() to retrieve names of 
+/// all players with matching number of hats. Calls DisplayManyPlayersUI() to display info 
+/// of all the matching players.
+///
+/// \return Nothing
+///
 void UI::SearchByNumberOfHatsUI()
 {
+	std::string numberOfHatsToSearchString = "";
+	std::string searchResult = "";
+	int numberOfHatsToSearch = 0;
+	system("CLS");
+	printf("Search By Name\n");
+	printf("\n");
+	printf("Enter Name: ");
+	std::cin >> numberOfHatsToSearchString;
+	numberOfHatsToSearch = atoi(numberOfHatsToSearchString.c_str());
+	searchResult = theContainer->SearchByHats(numberOfHatsToSearch);
+	system("CLS");
+	if (searchResult.compare("") == 0)
+	{
+		printf("Error: Player with %d hats cannot be found.\n", numberOfHatsToSearch);
+	}
+	else
+	{
+		DisplayOnePlayerUI(searchResult);
+	}
+	printf("All players with matching number of hats have been displayed.\n");
+	getch();
 }
+
 
 void UI::DisplayDatabaseUI()
 {
@@ -457,6 +583,15 @@ void UI::DisplayDatabaseUI()
 	getch();
 }
 
+///
+/// \brief Delete Container
+/// \details <b>Details</b>
+///
+/// Calls Container::DeleteContainer() to delete container. Will inform player that the container 
+/// has been deleted.
+///
+/// \return Nothing
+///
 void UI::DeleteDatabaseUI()
 {
 	theContainer->DeleteContainer();
@@ -467,6 +602,17 @@ void UI::DeleteDatabaseUI()
 	getch();
 }
 
+///
+/// \brief Generate Random Players
+/// \details <b>Details</b>
+///
+/// Prompts user to enter a number. Generates same amount of random players. Calls Container::CreateNewPlayer() 
+/// for each of the new random player. Will inform user how many random players have been added to container.
+///
+/// There's that very very very slight chance a Heavy would get "smart" in its field. I call hax if that happens.
+///
+/// \return Nothing
+///
 void UI::GenerateRandomPlayersUI()
 {
 	std::string tempName = "";
@@ -484,7 +630,7 @@ void UI::GenerateRandomPlayersUI()
 
 	system("CLS");
 	printf("Enter Number of Random Players to Generate: ");
-	getline(cin, stringBuffer);
+	getline(std::cin, stringBuffer);
 	numberOfRandomPlayers = atoi(stringBuffer.c_str());
 	system("CLS");
 	srand(time(NULL));
@@ -506,13 +652,13 @@ void UI::GenerateRandomPlayersUI()
 		}
 		if (generateSuccessful == true)
 		{
-			successCounter++;
+			successCounter = successCounter + 1;
 		}
 		else
 		{
-			errorCounter++;
+			errorCounter = errorCounter + 1;
 		}
-		randomPlayerCounter++;
+		randomPlayerCounter = randomPlayerCounter + 1;
 	}
 	printf("Random Player Generation Successful: %d\n", successCounter);
 	printf("Random Player Generation Failed: %d\n", errorCounter);
@@ -521,9 +667,40 @@ void UI::GenerateRandomPlayersUI()
 	getch();
 }
 
+///
+/// \brief Main Driver
+/// \details <b>Details</b>
+///
+/// The public class to be called by main(). Calls Container::RetrieveFromFile() before 
+/// displaying the menu. Calls Container::StoreInFile() when user exits the menu.
+///
+/// \return Nothing
+///
 void UI::UIDriver()
 {
-	theContainer->RetreiveFromFile();
+	try
+	{
+		theContainer->RetreiveFromFile();
+	}
+	catch (char* exceptionMessage)
+	{
+		printf("Error: %s", exceptionMessage);
+		printf("\n");
+		printf("Press any key to continue.\n");
+		getch();
+	}
+
 	MainMenuUI();
-	theContainer->StoreInFile();
+
+	try
+	{
+		theContainer->StoreInFile();
+	}
+	catch (char* exceptionMessage)
+	{
+		printf("Error: %s", exceptionMessage);
+		printf("\n");
+		printf("Press any key to continue.\n");
+		getch();
+	}
 }

@@ -1,5 +1,16 @@
 #include "RandomPlayerGenerator.h"
 
+///
+/// \brief Creates random string
+/// \details <b>Details</b>
+///
+/// Creates a random string of ASCII 32~126. Length of the string is determined by 
+/// parameter.
+///
+/// \param length - <b>int</b> - The length of the string to create.
+///
+/// \return <b>std::string</b> - The randomly generated string.
+///
 std::string RandomPlayerGenerator::RandomString(int length)
 {
 	std::string newRandomString = "";
@@ -18,7 +29,18 @@ std::string RandomPlayerGenerator::RandomString(int length)
 	return newRandomString;
 }
 
-std::string RandomPlayerGenerator::RandomName(string playerClass)
+///
+/// \brief Creates random name
+/// \details <b>Details</b>
+///
+/// Uses RandomString() to make a string with length of 12. Append class-specific 
+/// limitations to the string afterward.
+///
+/// \param playerClass - <b>std::string</b> - The class of the player the name is for.
+///
+/// \return <b>std::string</b> - The randomly generated name.
+///
+std::string RandomPlayerGenerator::RandomName(std::string playerClass)
 {
 	std::string newRandomName = "";
 	int randomNumber = 0;
@@ -53,6 +75,15 @@ std::string RandomPlayerGenerator::RandomName(string playerClass)
 	return newRandomName;
 }
 
+///
+/// \brief Creates random class
+/// \details <b>Details</b>
+///
+/// Returns one of the 9 classes at random.
+/// This one is expected to be called prior to any other random generators.
+///
+/// \return <b>std::string</b> - The randomly generated class.
+///
 std::string RandomPlayerGenerator::RandomPlayerClass()
 {
 	std::string newRandomClass = "";
@@ -101,7 +132,18 @@ std::string RandomPlayerGenerator::RandomPlayerClass()
 	return newRandomClass;
 }
 
-std::string RandomPlayerGenerator::RandomPrimaryWeapon(string playerClass)
+///
+/// \brief Creates random primary weapon
+/// \details <b>Details</b>
+///
+/// Calls RandomString() to generate a string of 12 characters long. Appends class-specific 
+/// limitations afterward.
+///
+/// \param playerClass - <b>std::string</b> - The length of the string to create.
+///
+/// \return <b>std::string</b> - The randomly generated primary weapon.
+///
+std::string RandomPlayerGenerator::RandomPrimaryWeapon(std::string playerClass)
 {
 	std::string newRandomPrimary = "";
 
@@ -119,6 +161,17 @@ std::string RandomPlayerGenerator::RandomPrimaryWeapon(string playerClass)
 	return newRandomPrimary;
 }
 
+///
+/// \brief Creates random secondary weapon
+/// \details <b>Details</b>
+///
+/// Calls RandomString() to generate a string of 12 characters long. Appends class-specific 
+/// limitations afterward.
+///
+/// \param playerClass - <b>std::string</b> - The length of the string to create.
+///
+/// \return <b>std::string</b> - The randomly generated secondary weapon.
+///
 std::string RandomPlayerGenerator::RandomSecondaryWeapon(string playerClass)
 {
 	std::string newRandomSecondary = "";
@@ -137,6 +190,17 @@ std::string RandomPlayerGenerator::RandomSecondaryWeapon(string playerClass)
 	return newRandomSecondary;
 }
 
+///
+/// \brief Creates random melee weapon
+/// \details <b>Details</b>
+///
+/// Calls RandomString() to generate a string of 12 characters long. Appends class-specific 
+/// limitations afterward.
+///
+/// \param playerClass - <b>std::string</b> - The length of the string to create.
+///
+/// \return <b>std::string</b> - The randomly generated melee weapon.
+///
 std::string RandomPlayerGenerator::RandomMeleeWeapon(string playerClass)
 {
 	std::string newRandomMelee = "";
@@ -191,6 +255,16 @@ std::string RandomPlayerGenerator::RandomMeleeWeapon(string playerClass)
 	return newRandomMelee;
 }
 
+///
+/// \brief Creates random number of hats
+/// \details <b>Details</b>
+///
+/// Generates a random number between 0~9999. Add 5 more hats if player class is Sniper.
+///
+/// \param playerClass - <b>std::string</b> - The length of the string to create.
+///
+/// \return <b>int</b> - The randomly generated number for hats.
+///
 int RandomPlayerGenerator::RandomNumberOfHats(string playerClass)
 {
 	int newRandomNumberOfHats = 0;
